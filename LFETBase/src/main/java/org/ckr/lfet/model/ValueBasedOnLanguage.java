@@ -7,6 +7,7 @@ import org.simpleframework.xml.Root;
 public class ValueBasedOnLanguage {
 
 	public ValueBasedOnLanguage(@Attribute(required = true, name = "language") String language) {
+		this.language = language;
 	}
 	
 	private String language;

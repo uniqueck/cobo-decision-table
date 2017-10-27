@@ -33,7 +33,7 @@ public class Condition {
 	}
 	
 	
-	@ElementList(name = "ConditionOccurences", required = false, inline = false, entry = "ConditionOccurence")
+	@ElementList(name = "ConditionOccurrences", required = false, inline = false, entry = "ConditionOccurrence")
 	private List<Occurences> occurences;
 	
 	public List<Occurences> getOccurences() {
