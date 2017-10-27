@@ -9,7 +9,6 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 public class LFET {
 
-
 	@Attribute(required = true, name = "version")
 	private String version;
 	
