@@ -1,9 +1,7 @@
 node {
 	def mavenHome = tool 'M3'
 	stage('Checkout') {
-		scm {
-			git branch : env.BRANCH_NAME url : scm.branch
-		}	
+		checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/uniqueck/lfet.git']]])
 	}
 
 }
