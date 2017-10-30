@@ -4,7 +4,7 @@ node {
 		checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/uniqueck/lfet.git']]])
 	}
 	stage('Build') {
-		sh "${mavenHome}/bin/mvn clean compile"
+		sh "${mavenHome}/bin/mvn clean package -DskipTests=true"
 	}
 	stage('Test') {
 		sh "${mavenHome}/bin/mvn test"
