@@ -75,8 +75,37 @@ public class LFETTest {
 		assertValueBasedOnLanguage(occ.getSymbol(), "5");
 		assertValueBasedOnLanguage(occ.getTitle(), "search for duplicate step");
 		
+		/**
+		 * <Condition uId="11446800829457960">
+      	 *	<Title language="German" value="has more calendars"/>
+      	 *	<SourceCode codeLanguage="Perl" sourceCodeType="LogArg" value="$calIndex &lt; scalar(@calendernamen)"/>
+    	 * </Condition>
+		 */
+		condition = conditions.get(1);
+		assertNotNull(condition);
+		assertNotNull(condition.getuId());
+		assertEquals("11446800829457960", condition.getuId());
+
+		assertValueBasedOnLanguage(condition.getTitle(), "has more calendars");
+		
+		/**
+		 * <Condition uId="15041328493073228">
+      	 *  <Title language="German" value="has more events"/>
+         *  <SourceCode codeLanguage="Perl" sourceCodeType="LogArg" value="$eventIndex &lt; scalar(@termine)"/>
+         * </Condition>
+		 */
+		condition = conditions.get(2);
+		assertNotNull(condition);
+		assertNotNull(condition.getuId());
+		assertEquals("15041328493073228", condition.getuId());
+
+		assertValueBasedOnLanguage(condition.getTitle(), "has more events");
 		
 		
+		
+		
+		
+
 
 	}
 
