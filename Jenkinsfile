@@ -10,7 +10,7 @@ node {
 		sh "${mavenHome}/bin/mvn test"
 	}
 	stage('Publish result') {
-		archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, onlyIfSuccessful: true
+		archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true, onlyIfSuccessful: true
 		junit '**/target/surefire-reports/*.xml'
 	}
 
