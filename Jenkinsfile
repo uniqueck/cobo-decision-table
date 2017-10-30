@@ -11,7 +11,7 @@ node {
 	}
 	stage('Publish result') {
 		archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, onlyIfSuccessful: true
-		junit '**/target/test-reports/*.xml'
+		junit '**/target/surefire-reports/*.xml'
 	}
 
 }
