@@ -9,5 +9,9 @@ node {
 	stage('Test') {
 		sh "${mavenHome}/bin/mvn test"
 	}
+	stage('Publish result') {
+		archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, onlyIfSuccessful: true
+		junit '**/target/test-reports/*.xml'
+	}
 
 }
