@@ -6,6 +6,9 @@ import org.ckr.lfet.exception.LFETParseRuntimeException;
 import org.simpleframework.xml.core.Persister;
 
 public class LFETDao {
+	
+	private LFETDao() {
+	}
 
 	public static LFET fromFile(File lfetFile) {
 		try {

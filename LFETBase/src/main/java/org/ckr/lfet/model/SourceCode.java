@@ -17,7 +17,7 @@ public class SourceCode extends ValueBasedOnLanguage {
 	}
 	
 	@Attribute(required = false, name = "SourceCode")
-	private String sourceCode;
+	private String content;
 	
 
 	
