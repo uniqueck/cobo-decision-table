@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import java.io.File;
 import java.util.List;
 
+import org.ckr.lfet.dao.LFETDao;
 import org.junit.Assert;
 import org.junit.Test;
 

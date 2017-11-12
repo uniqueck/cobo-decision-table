@@ -6,9 +6,12 @@ public class LFETParseRuntimeException extends RuntimeException {
 		super(e);
 	}
 
-	/**
-	 * 
-	 */
+	
+
+	public LFETParseRuntimeException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 	private static final long serialVersionUID = -8460377880002225479L;
 
 }
