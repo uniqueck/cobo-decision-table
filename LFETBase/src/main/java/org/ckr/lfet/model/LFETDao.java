@@ -11,6 +11,10 @@ public class LFETDao {
 	}
 
 	public static LFET fromFile(File lfetFile) {
+		if (lfetFile == null) {
+			throw new IllegalArgumentException("lfetFile is null");
+		}
+		
 		try {
 			Persister persister = new Persister();
 			return persister.read(LFET.class, lfetFile);
