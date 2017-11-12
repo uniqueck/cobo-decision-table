@@ -1,2 +1,2 @@
-[![Build Status](https://travis-ci.org/uniqueck/lfet.svg?branch=master)]
+[![Build Status](https://travis-ci.org/uniqueck/lfet.svg?branch=master)][![Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.ckr.lfet:LFETParent)]
 # utilities for decision table tool from lohrfink software engineering (https://www.lohrfink.de/de/startseite/)
