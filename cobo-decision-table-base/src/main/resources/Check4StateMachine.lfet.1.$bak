@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LFET version="LF-ET 2.1.5 (171120a)" language="German" saveDate="2018.02.06 at 00:49:26 CET" saveUser="constantin">
+  <Conditions>
+    <Condition uId="1517873071211614">
+      <Title language="German" value="state"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178734678491724">
+          <Symbol language="German" value="INIT"/>
+          <Title language="German" value="initialize"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178733487121289">
+          <Symbol language="German" value="CC"/>
+          <Title language="German" value="count state conditions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178740659293004">
+          <Symbol language="German" value="CA"/>
+          <Title language="German" value="count state actions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517873078385697">
+          <Symbol language="German" value="CHECK"/>
+          <Title language="German" value="check for state machine"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="15178736499862269">
+      <Title language="German" value="condition has occurence table"/>
+    </Condition>
+    <Condition uId="15178734259241596">
+      <Title language="German" value="condition title contains word ..."/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178737573582444">
+          <Symbol language="German" value="ZUSTAND"/>
+          <Title language="German" value="german word for state"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178737573582446">
+          <Symbol language="German" value="STATE"/>
+          <Title language="German" value="state"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178738007582702">
+          <Symbol language="German" value="*"/>
+          <Title language="German" value="other"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="15178734484981601">
+      <Title language="German" value="has next condition"/>
+    </Condition>
+    <Condition uId="15178740936733142">
+      <Title language="German" value="action has occurence table"/>
+    </Condition>
+    <Condition uId="15178741143693146">
+      <Title language="German" value="action title contains word ..."/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178741145553149">
+          <Symbol language="German" value="ZUSTAND"/>
+          <Title language="German" value="german word for state"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178741145553153">
+          <Symbol language="German" value="STATE"/>
+          <Title language="German" value="state"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178741145553156">
+          <Symbol language="German" value="*"/>
+          <Title language="German" value="other"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="15178741074243144">
+      <Title language="German" value="has next action"/>
+    </Condition>
+    <Condition uId="15178744679103671">
+      <Title language="German" value="number of state actions"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178744924413902">
+          <Symbol language="German" value="0"/>
+          <Title language="German" value="no state actions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178744924413904">
+          <Symbol language="German" value="1"/>
+          <Title language="German" value="one state action"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178745054773909">
+          <Symbol language="German" value="&gt;1"/>
+          <Title language="German" value="more than one state action"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="15178745204184120">
+      <Title language="German" value="number of state conditions"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178745206284123">
+          <Symbol language="German" value="0"/>
+          <Title language="German" value="no state condion"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178745206284127">
+          <Symbol language="German" value="1"/>
+          <Title language="German" value="one state conditions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178745206284130">
+          <Symbol language="German" value="&gt;1"/>
+          <Title language="German" value="more than one state conditions"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+  </Conditions>
+  <Actions>
+    <Action uId="151787208172377">
+      <Title language="German" value="count condition"/>
+    </Action>
+    <Action uId="15178742751163441">
+      <Title language="German" value="count action"/>
+    </Action>
+    <Action uId="11446800828767967">
+      <Title language="German" value="state machine"/>
+      <ActionOccurrences>
+        <ActionOccurrence uId="1517775831707330">
+          <Symbol language="German" value="Y"/>
+          <Title language="German" value="is state machine"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="1517775854715445">
+          <Symbol language="German" value="N"/>
+          <Title language="German" value="no state machine"/>
+        </ActionOccurrence>
+      </ActionOccurrences>
+    </Action>
+    <Action uId="15178735936601833">
+      <Title language="German" value="next condition"/>
+    </Action>
+    <Action uId="15178741599993165">
+      <Title language="German" value="next action"/>
+    </Action>
+    <Action uId="151787227457993">
+      <Title language="German" value="state"/>
+      <ActionOccurrences>
+        <ActionOccurrence uId="1517873036035550">
+          <Symbol language="German" value="EXIT"/>
+          <Title language="German" value="exit"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="15178736135691976">
+          <Symbol language="German" value="CC"/>
+          <Title language="German" value="count state conditions"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="15178741849643175">
+          <Symbol language="German" value="CHECK"/>
+          <Title language="German" value="check for state machine"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="15178742667063219">
+          <Symbol language="German" value="CA"/>
+          <Title language="German" value="count state actions"/>
+        </ActionOccurrence>
+      </ActionOccurrences>
+    </Action>
+  </Actions>
+  <Rules lastId="41">
+    <Rule id="21">
+      <ConditionOccurrenceLink link="15178734678491724"/>
+      <ActionLink link="15178735936601833"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+      <ActionOccurrenceLink link="15178736135691976"/>
+    </Rule>
+    <Rule id="22">
+      <ConditionOccurrenceLink link="15178734678491724"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+      <ActionOccurrenceLink link="1517873036035550"/>
+      <ActionOccurrenceLink link="1517775854715445"/>
+    </Rule>
+    <Rule id="23">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178737573582444"/>
+      <ActionLink link="151787208172377"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+    </Rule>
+    <Rule id="24">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178737573582444"/>
+      <ActionLink link="151787208172377"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+    </Rule>
+    <Rule id="25">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178737573582446"/>
+      <ActionLink link="151787208172377"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+    </Rule>
+    <Rule id="26">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178737573582446"/>
+      <ActionLink link="151787208172377"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+    </Rule>
+    <Rule id="27">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178738007582702"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+      <ActionLink link="15178735936601833"/>
+    </Rule>
+    <Rule id="28">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178738007582702"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+      <ActionOccurrenceLink link="1517873036035550"/>
+      <ActionOccurrenceLink link="1517775854715445"/>
+    </Rule>
+    <Rule id="29">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="false"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+      <ActionLink link="15178735936601833"/>
+      <ActionOccurrenceLink link="15178736135691976"/>
+    </Rule>
+    <Rule id="30">
+      <ConditionOccurrenceLink link="15178733487121289"/>
+      <ConditionLink link="15178736499862269" conditionState="false"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+      <ActionOccurrenceLink link="1517873036035550"/>
+      <ActionOccurrenceLink link="1517775854715445"/>
+    </Rule>
+    <Rule id="38">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553149"/>
+      <ConditionLink link="15178741074243144" conditionState="true"/>
+      <ActionLink link="15178741599993165"/>
+      <ActionOccurrenceLink link="15178742667063219"/>
+      <ActionLink link="15178742751163441"/>
+    </Rule>
+    <Rule id="39">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553149"/>
+      <ConditionLink link="15178741074243144" conditionState="false"/>
+      <ActionOccurrenceLink link="15178741849643175"/>
+      <ActionLink link="15178742751163441"/>
+    </Rule>
+    <Rule id="40">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553153"/>
+      <ConditionLink link="15178741074243144" conditionState="true"/>
+      <ActionLink link="15178741599993165"/>
+      <ActionOccurrenceLink link="15178742667063219"/>
+      <ActionLink link="15178742751163441"/>
+    </Rule>
+    <Rule id="41">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553153"/>
+      <ConditionLink link="15178741074243144" conditionState="false"/>
+      <ActionOccurrenceLink link="15178741849643175"/>
+      <ActionLink link="15178742751163441"/>
+    </Rule>
+    <Rule id="35">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553156"/>
+      <ConditionLink link="15178741074243144" conditionState="true"/>
+      <ActionLink link="15178741599993165"/>
+      <ActionOccurrenceLink link="15178742667063219"/>
+    </Rule>
+    <Rule id="36">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="true"/>
+      <ConditionOccurrenceLink link="15178741145553156"/>
+      <ConditionLink link="15178741074243144" conditionState="false"/>
+      <ActionOccurrenceLink link="15178741849643175"/>
+    </Rule>
+    <Rule id="37">
+      <ConditionOccurrenceLink link="15178740659293004"/>
+      <ConditionLink link="15178740936733142" conditionState="false"/>
+      <ActionOccurrenceLink link="15178741849643175"/>
+    </Rule>
+    <Rule id="20">
+      <ConditionOccurrenceLink link="1517873078385697"/>
+    </Rule>
+  </Rules>
+  <Title language="German" value="check if a decision table is a state machine"/>
+  <UrlsOut>
+    <Url title="Ordner" url="file:///./"/>
+  </UrlsOut>
+  <SourceCode codeLanguage="Java" sourceCodeType="Prolog" value="// $$Package=org.ckr.lfet.model.check.rules.lfet&lt;br/&gt;// $$InterfaceName=I$$dtname&lt;br/&gt;// $$InterfaceRulesClassName=$$dtnameETLogic"/>
+</LFET>

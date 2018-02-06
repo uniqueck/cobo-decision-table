@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LFET version="LF-ET 2.1.5 (171120a)" language="English" saveDate="2018.02.04 at 23:19:20 CET" saveUser="constantin">
+  <Conditions>
+    <Condition uId="11443124863866955">
+      <Title language="English" value="State"/>
+    </Condition>
+  </Conditions>
+  <Actions>
+    <Action uId="11443124863976962">
+      <Title language="English" value="Useless Action"/>
+    </Action>
+    <Action uId="11443124877466972">
+      <Title language="English" value="State"/>
+    </Action>
+  </Actions>
+  <Rules lastId="4">
+    <Rule id="3">
+      <ConditionLink link="11443124863866955" conditionState="true"/>
+      <ActionLink link="11443124877466972"/>
+    </Rule>
+    <Rule id="4">
+      <ConditionLink link="11443124863866955" conditionState="false"/>
+      <ActionLink link="11443124863976962"/>
+    </Rule>
+  </Rules>
+  <Title language="English" value="A Statemachine, only for testing purpose"/>
+  <UrlsOut>
+    <Url title="Folder" url="file:///./"/>
+  </UrlsOut>
+</LFET>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LFET version="LF-ET 2.1.5 (171120a)" language="German" saveDate="2018.02.06 at 00:33:45 CET" saveUser="constantin">
+  <Conditions>
+    <Condition uId="1517873071211614">
+      <Title language="German" value="state"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178734678491724">
+          <Symbol language="German" value="INIT"/>
+          <Title language="German" value="initialize"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178733487121289">
+          <Symbol language="German" value="CC"/>
+          <Title language="German" value="count state conditions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517873078385697">
+          <Symbol language="German" value="CHECK"/>
+          <Title language="German" value="check for state machine"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="1517775673172135">
+      <Title language="German" value="language of the decision table"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="1517775695708190">
+          <Symbol language="German" value="GER"/>
+          <Title language="German" value="German"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517775695708192">
+          <Symbol language="German" value="ENG"/>
+          <Title language="German" value="English"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517775718682197">
+          <Symbol language="German" value="*"/>
+          <Title language="German" value="not supported yet"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="11446800829457960">
+      <Title language="German" value="state conditions"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="1517873106581955">
+          <Symbol language="German" value="0"/>
+          <Title language="German" value="no state conditions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517873106581957">
+          <Symbol language="German" value="1"/>
+          <Title language="German" value="1 state condition"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="1517873140917962">
+          <Symbol language="German" value="&gt;1"/>
+          <Title language="German" value="more than one state conditions"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+    <Condition uId="15178734259241596">
+      <Title language="German" value="conition title contains word ZUSTAND"/>
+    </Condition>
+    <Condition uId="15178734484981601">
+      <Title language="German" value="has next condition"/>
+    </Condition>
+    <Condition uId="15178734373831598">
+      <Title language="German" value="conition title contains word STATE"/>
+    </Condition>
+    <Condition uId="15178731586471050">
+      <Title language="German" value="state actions"/>
+      <ConditionOccurrences>
+        <ConditionOccurrence uId="15178731588451053">
+          <Symbol language="German" value="0"/>
+          <Title language="German" value="no state conditions"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178731588461057">
+          <Symbol language="German" value="1"/>
+          <Title language="German" value="1 state condition"/>
+        </ConditionOccurrence>
+        <ConditionOccurrence uId="15178731588461060">
+          <Symbol language="German" value="&gt;1"/>
+          <Title language="German" value="more than one state conditions"/>
+        </ConditionOccurrence>
+      </ConditionOccurrences>
+    </Condition>
+  </Conditions>
+  <Actions>
+    <Action uId="151787208172377">
+      <Title language="German" value="count conditions which name contains the word ZUSTAND"/>
+    </Action>
+    <Action uId="151787220070080">
+      <Title language="German" value="count actions which name contains the word ZUSTAND"/>
+    </Action>
+    <Action uId="151787220174783">
+      <Title language="German" value="count conditions which name contains the word STATE"/>
+    </Action>
+    <Action uId="151787220261186">
+      <Title language="German" value="count actions which name contains the word STATE"/>
+    </Action>
+    <Action uId="11446800828767967">
+      <Title language="German" value="state machine"/>
+      <ActionOccurrences>
+        <ActionOccurrence uId="1517775831707330">
+          <Symbol language="German" value="Y"/>
+          <Title language="German" value="is state machine"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="1517775854715445">
+          <Symbol language="German" value="N"/>
+          <Title language="German" value="no state machine"/>
+        </ActionOccurrence>
+      </ActionOccurrences>
+    </Action>
+    <Action uId="15178735936601833">
+      <Title language="German" value="next condition"/>
+    </Action>
+    <Action uId="151787227457993">
+      <Title language="German" value="state"/>
+      <ActionOccurrences>
+        <ActionOccurrence uId="1517873036035550">
+          <Symbol language="German" value="EXIT"/>
+          <Title language="German" value="exit"/>
+        </ActionOccurrence>
+        <ActionOccurrence uId="15178736135691976">
+          <Symbol language="German" value="CC"/>
+          <Title language="German" value="count state conditions"/>
+        </ActionOccurrence>
+      </ActionOccurrences>
+    </Action>
+  </Actions>
+  <Rules lastId="22">
+    <Rule id="21">
+      <ConditionOccurrenceLink link="15178734678491724"/>
+      <ActionLink link="15178735936601833"/>
+      <ConditionLink link="15178734484981601" conditionState="true"/>
+      <ActionOccurrenceLink link="15178736135691976"/>
+    </Rule>
+    <Rule id="22">
+      <ConditionOccurrenceLink link="15178734678491724"/>
+      <ConditionLink link="15178734484981601" conditionState="false"/>
+      <ActionOccurrenceLink link="1517873036035550"/>
+      <ActionOccurrenceLink link="1517775854715445"/>
+    </Rule>
+    <Rule id="18">
+      <ConditionOccurrenceLink link="1517775695708190"/>
+      <ActionLink link="151787208172377"/>
+      <ActionLink link="151787220070080"/>
+      <ConditionOccurrenceLink link="15178733487121289"/>
+    </Rule>
+    <Rule id="19">
+      <ConditionOccurrenceLink link="1517775695708192"/>
+      <ActionLink link="151787220174783"/>
+      <ActionLink link="151787220261186"/>
+      <ConditionOccurrenceLink link="15178733487121289"/>
+    </Rule>
+    <Rule id="17">
+      <ConditionOccurrenceLink link="1517775718682197"/>
+      <ActionOccurrenceLink link="1517775854715445"/>
+      <ActionOccurrenceLink link="1517873036035550"/>
+      <ConditionOccurrenceLink link="15178733487121289"/>
+    </Rule>
+    <Rule id="20">
+      <ConditionOccurrenceLink link="1517873078385697"/>
+    </Rule>
+  </Rules>
+  <Title language="German" value="check if a decision table is a state machine"/>
+  <UrlsOut>
+    <Url title="Ordner" url="file:///./"/>
+  </UrlsOut>
+  <SourceCode codeLanguage="Java" sourceCodeType="Prolog" value="// $$Package=org.ckr.lfet.model.check.rules.lfet&lt;br/&gt;// $$InterfaceName=I$$dtname&lt;br/&gt;// $$InterfaceRulesClassName=$$dtnameETLogic"/>
+</LFET>
