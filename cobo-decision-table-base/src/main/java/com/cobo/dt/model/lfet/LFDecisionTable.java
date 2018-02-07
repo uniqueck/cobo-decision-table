@@ -1,17 +1,26 @@
-package org.ckr.lfet.model;
+package com.cobo.dt.model.lfet;
 
 import java.util.List;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false)
-public class LFET {
+public class LFDecisionTable {
 
 	@Attribute(required = true, name = "version")
 	private String version;
+	
+	@Attribute(required = true, name = "value")
+	@Path(value = "Title")
+	private String title;
 
+	@Attribute(required = true, name = "value")
+	@Path(value = "Text")
+	private String text;
+	
 	public String getVersion() {
 		return version;
 	}
@@ -60,6 +69,14 @@ public class LFET {
 
 	public boolean isStateMachine() {
 		return false;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public String getText() {
+		return text;
 	}
 
 }

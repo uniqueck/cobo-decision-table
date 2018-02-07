@@ -1,4 +1,4 @@
-package org.ckr.lfet.model;
+package com.cobo.dt.model.lfet;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;

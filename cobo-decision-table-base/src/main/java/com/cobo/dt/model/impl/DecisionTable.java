@@ -14,11 +14,23 @@ public class DecisionTable {
 	private IDecisionTableDefinition definition;
 	private List<IRule> rules;
 	private IDocu documentation;
+	
+	private String title;
+	
 
 	public DecisionTable() {
 		this.definition = new DecisionTableDefinition();
 		this.rules = new ArrayList<IRule>();
 		this.documentation = new Docu();
+		this.title = "";
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public IDecisionTableDefinition getDefinition() {
@@ -29,7 +41,7 @@ public class DecisionTable {
 		return rules;
 	}
 	
-	protected IDocu getDocumentation() {
+	public IDocu getDocumentation() {
 		return documentation;
 	}
 	
