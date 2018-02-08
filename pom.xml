@@ -8,6 +8,7 @@
   <modules>
   	<module>cobo-decision-table-base</module>
   	<module>cobo-decision-table-ui</module>
+  	<module>cobo-decision-table-ui-swt</module>
   </modules>
   
   <properties>
