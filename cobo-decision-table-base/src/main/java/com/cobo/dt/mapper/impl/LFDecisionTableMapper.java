@@ -24,6 +24,7 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 			IConditionDefinition addNewConditionDefinition = decisionTable.getDefinition().addNewConditionDefinition(t.getTitle().getValue());
 			addNewConditionDefinition.getDocumentation().setDescription(t.getText().getValue());
 			if (t.getOccurences() != null) {
+				addNewConditionDefinition.getValueSet().clearValues();
 				t.getOccurences().forEach(o -> {
 					IRulePartValue addValue = addNewConditionDefinition.getValueSet().addValue(o.getSymbol().getValue());
 					addValue.getDocumentation().setDescription(o.getTitle().getValue());
@@ -37,6 +38,13 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 		dt2Map.getActions().stream().forEach(t -> {
 			IActionDefinition actionDefinition = decisionTable.getDefinition().addNewActionDefinition(t.getTitle().getValue());
 			actionDefinition.getDocumentation().setDescription(t.getText().getValue());
+			if (t.getOccurences() != null) {
+				actionDefinition.getValueSet().clearValues();
+				t.getOccurences().forEach(o -> {
+					IRulePartValue addValue = actionDefinition.getValueSet().addValue(o.getSymbol().getValue());
+					addValue.getDocumentation().setDescription(o.getTitle().getValue());
+				});
+			}
 		});
 		
 		

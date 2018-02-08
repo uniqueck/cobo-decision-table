@@ -58,4 +58,9 @@ public class RulePartValueSet implements IRulePartValueSet {
 	public String toString() {
 		return getValues().toString();
 	}
+
+	@Override
+	public void clearValues() {
+		getValues().clear();
+	}
 }

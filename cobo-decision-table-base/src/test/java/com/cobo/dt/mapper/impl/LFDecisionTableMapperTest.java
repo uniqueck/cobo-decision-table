@@ -10,6 +10,7 @@ import org.simpleframework.xml.core.Persister;
 
 import com.cobo.dt.model.IActionDefinition;
 import com.cobo.dt.model.IConditionDefinition;
+import com.cobo.dt.model.IRulePartValue;
 import com.cobo.dt.model.impl.DecisionTable;
 import com.cobo.dt.model.lfet.LFDecisionTable;
 
@@ -28,8 +29,16 @@ public class LFDecisionTableMapperTest {
 		IConditionDefinition conditionDefinition = dt.getDefinition().getConditionDefinitions().get(0);
 		assertEquals("State", conditionDefinition.getText());
 		assertEquals("documentation for C01", conditionDefinition.getDocumentation().getDescription());
-		// FIXME BG/CK @20180208 - default values should not be in value list
 		assertEquals(2, conditionDefinition.getValueSet().getValues().size());
+		IRulePartValue valuePart = conditionDefinition.getValueSet().getValues().get(0);
+		assertNotNull(valuePart);
+		assertEquals("INIT", valuePart.getValue());
+		assertEquals("Init State", valuePart.getDocumentation().getDescription());
+		
+		valuePart = conditionDefinition.getValueSet().getValues().get(1);
+		assertNotNull(valuePart);
+		assertEquals("CHECK", valuePart.getValue());
+		assertEquals("Check State", valuePart.getDocumentation().getDescription());
 		
 		
 		
@@ -42,6 +51,16 @@ public class LFDecisionTableMapperTest {
 		assertEquals("State", actionDefinition.getText());
 		assertEquals("documentation for A02", actionDefinition.getDocumentation().getDescription());
 		assertEquals(2, actionDefinition.getValueSet().getValues().size());
+		
+		valuePart = actionDefinition.getValueSet().getValues().get(0);
+		assertNotNull(valuePart);
+		assertEquals("EXIT", valuePart.getValue());
+		assertEquals("Exit State", valuePart.getDocumentation().getDescription());
+		valuePart = actionDefinition.getValueSet().getValues().get(1);
+		assertNotNull(valuePart);
+		assertEquals("CHECK", valuePart.getValue());
+		assertEquals("Check State", valuePart.getDocumentation().getDescription());
+		
 	}
 
 }
