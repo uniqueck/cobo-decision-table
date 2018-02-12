@@ -16,8 +16,8 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 	public DecisionTable map(LFDecisionTable dt2Map) {
 
 		DecisionTable decisionTable = new DecisionTable();
-		decisionTable.setTitle(dt2Map.getTitle());
-		decisionTable.getDocumentation().setDescription(dt2Map.getText());
+		decisionTable.setTitle(dt2Map.getTitle().getValue());
+		decisionTable.getDocumentation().setDescription(dt2Map.getText().getValue());
 		
 		
 		dt2Map.getConditions().stream().forEach(t -> {

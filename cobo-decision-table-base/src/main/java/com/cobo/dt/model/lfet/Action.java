@@ -1,43 +1,18 @@
 package com.cobo.dt.model.lfet;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false)
-public class Action {
-	
-	@Attribute(required = true, name = "uId")
-	private String uId;
-	
-	public String getuId() {
-		return uId;
+public class Action extends AbstractRulePart<ActionOccurence> {
+	public Action(String uid, Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<ActionOccurence> occurences) {
+		super(uid, title, text, sourceCodes, occurences);
 	}
-	
-	@Element(required = true, name = "Title")
-	private ValueBasedOnLanguage title;
-	
-	@Element(required = false, name = "Text")
-	private ValueBasedOnLanguage text;
 
-	public ValueBasedOnLanguage getTitle() {
-		return title;
-	}
-	
-	
 	@ElementList(name = "ActionOccurrences", required = false, inline = false, entry = "ActionOccurrence")
-	private List<Occurences> occurences;
-	
-	public List<Occurences> getOccurences() {
-		return occurences;
+	public ArrayList<ActionOccurence> getOccurences() {
+		return (ArrayList<ActionOccurence>)super.getOccurences();
 	}
-	
-	public ValueBasedOnLanguage getText() {
-		return text;
-	}
-	
-
 }

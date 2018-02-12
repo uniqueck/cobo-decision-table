@@ -2,8 +2,11 @@ package com.cobo.dt.model.lfet;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import java.io.File;
+import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -11,7 +14,85 @@ import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
 
 public class LFDecisionTableTest {
+	private static String NEW_LINE = "\n";
 
+	private LFDecisionTable createUnderTest(String version, String language, String saveUser, String saveDate,
+			Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<Condition> conditions, ArrayList<Action> actions, ArrayList<Rule> rules) {
+		return new LFDecisionTable(version, language, saveUser, saveDate,
+				title, text, sourceCodes, conditions, actions, rules);
+	}
+
+	private String createExpectedXml() {
+		return "<LFDecisionTable version='version' language='English' saveUser='user' saveDate='date'>" + NEW_LINE
+				+ "   <Title value='title' language='English'/>" + NEW_LINE
+				+ "   <Text value='text' language='English'/>" + NEW_LINE
+				+ "   <Conditions/>" + NEW_LINE
+				+ "   <Actions/>" + NEW_LINE
+				+ "   <Rules/>" + NEW_LINE
+				+ "</LFDecisionTable>";		
+	}
+	
+	private String persist(LFDecisionTable dt) throws Exception {
+		Persister xmlPersister = new Persister();
+		StringWriter out = new StringWriter();
+		xmlPersister.write(dt, out);
+		return out.toString();		
+	}
+	
+	
+	
+	@Test
+	public void testLFDecisionTable() throws Exception {
+		Title title = new Title("English", "title");
+		Text text = new Text("English", "text");
+		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		ArrayList<Condition> conditions = new ArrayList<Condition>();
+		ArrayList<Action> actions = new ArrayList<Action>();
+		ArrayList<Rule> rules = new ArrayList<Rule>();
+		
+		LFDecisionTable dt = createUnderTest("version", "English", "user", "date",
+				title, text, sourceCodes,
+				conditions, actions, rules);
+		
+		assertEquals("version", dt.getVersion());
+		assertEquals("English", dt.getLanguage());
+		assertEquals("user", dt.getSaveUser());
+		assertEquals("date", dt.getSaveDate());
+		assertSame(title, dt.getTitle());
+		assertSame(text, dt.getText());
+		assertSame(sourceCodes, dt.getSourceCodes());
+		assertSame(conditions, dt.getConditions());
+		assertSame(actions, dt.getActions());
+		assertSame(rules, dt.getRules());
+	}
+	
+	@Test
+	public void testPersistModel() throws Exception {
+		Title title = new Title("English", "title");
+		Text text = new Text("English", "text");
+		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		ArrayList<Condition> conditions = new ArrayList<Condition>();
+		ArrayList<Action> actions = new ArrayList<Action>();
+		ArrayList<Rule> rules = new ArrayList<Rule>();
+		
+		LFDecisionTable dt = createUnderTest("version", "English", "user", "date",
+				title, text, sourceCodes,
+				conditions, actions, rules);
+
+		String xml = persist(dt);
+		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+	}
+
+
+
+
+
+
+	
+	
+	
+	
+	
 	@Test
 	public void testLFDT_AbfallGetEvents() throws Exception {
 		LFDecisionTable lfet = new Persister().read(LFDecisionTable.class,
@@ -30,6 +111,17 @@ public class LFDecisionTableTest {
 
 		assertConditions(lfet.getConditions());
 
+	}
+	
+	@Test
+	public void testLFDT_Test() throws Exception {
+		LFDecisionTable lfet = new Persister().read(LFDecisionTable.class,
+				new File("src/test/resources/Test.lfet"));
+		Assert.assertNotNull(lfet);
+		assertEquals("LF-ET 2.1.5 (170306b)", lfet.getVersion());
+		assertEquals("2017.09.08 at 13:21:39 CEST", lfet.getSaveDate());
+		assertEquals("German", lfet.getLanguage());
+		assertEquals("constantin", lfet.getSaveUser());
 	}
 	
 	
@@ -74,42 +166,42 @@ public class LFDecisionTableTest {
 
 		Condition condition = conditions.get(0);
 		assertNotNull(condition);
-		assertNotNull(condition.getuId());
-		assertEquals("1504126444840415", condition.getuId());
+		assertNotNull(condition.getUId());
+		assertEquals("1504126444840415", condition.getUId());
 
 		assertValueBasedOnLanguage(condition.getTitle(), "step");
 
-		List<Occurences> occurences = condition.getOccurences();
+		ArrayList<ConditionOccurence> occurences = condition.getOccurences();
 		assertNotNull(occurences);
 		assertEquals(5, occurences.size());
 
-		Occurences occ = occurences.get(0);
+		AbstractOccurence occ = occurences.get(0);
 		assertNotNull(occ);
-		assertEquals("1504126505502473", occ.getuId());
+		assertEquals("1504126505502473", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "1");
 		assertValueBasedOnLanguage(occ.getTitle(), "calendar step");
 
 		occ = occurences.get(1);
 		assertNotNull(occ);
-		assertEquals("1504126505502475", occ.getuId());
+		assertEquals("1504126505502475", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "2");
 		assertValueBasedOnLanguage(occ.getTitle(), "event step");
 
 		occ = occurences.get(2);
 		assertNotNull(occ);
-		assertEquals("15042103579651680", occ.getuId());
+		assertEquals("15042103579651680", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "3");
 		assertValueBasedOnLanguage(occ.getTitle(), "start time step");
 
 		occ = occurences.get(3);
 		assertNotNull(occ);
-		assertEquals("15042131247763480", occ.getuId());
+		assertEquals("15042131247763480", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "4");
 		assertValueBasedOnLanguage(occ.getTitle(), "check start time step");
 
 		occ = occurences.get(4);
 		assertNotNull(occ);
-		assertEquals("15042156349605690", occ.getuId());
+		assertEquals("15042156349605690", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "5");
 		assertValueBasedOnLanguage(occ.getTitle(), "search for duplicate step");
 
@@ -121,8 +213,8 @@ public class LFDecisionTableTest {
 		 */
 		condition = conditions.get(1);
 		assertNotNull(condition);
-		assertNotNull(condition.getuId());
-		assertEquals("11446800829457960", condition.getuId());
+		assertNotNull(condition.getUId());
+		assertEquals("11446800829457960", condition.getUId());
 
 		assertValueBasedOnLanguage(condition.getTitle(), "has more calendars");
 
@@ -134,18 +226,17 @@ public class LFDecisionTableTest {
 		 */
 		condition = conditions.get(2);
 		assertNotNull(condition);
-		assertNotNull(condition.getuId());
-		assertEquals("15041328493073228", condition.getuId());
+		assertNotNull(condition.getUId());
+		assertEquals("15041328493073228", condition.getUId());
 
 		assertValueBasedOnLanguage(condition.getTitle(), "has more events");
 
 	}
 
-	private void assertValueBasedOnLanguage(ValueBasedOnLanguage actualTitle, String expectedValue) {
+	private void assertValueBasedOnLanguage(AbstractValueBasedOnLanguage actualTitle, String expectedValue) {
 		assertNotNull(actualTitle);
 		assertEquals("German", actualTitle.getLanguage());
 		assertEquals(expectedValue, actualTitle.getValue());
 
 	}
-
 }

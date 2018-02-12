@@ -1,41 +1,20 @@
 package com.cobo.dt.model.lfet;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false, name = "Condition")
-public class Condition {
-
-	@Attribute(required = true, name = "uId")
-	private String uId;
-
-	public String getuId() {
-		return uId;
+@Root(strict = false)
+public class Condition extends AbstractRulePart<ConditionOccurence> {
+	public Condition(String uid, Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<ConditionOccurence> occurences) {
+		super(uid, title, text, sourceCodes, occurences);
 	}
-
-	@Element(required = true, name = "Title")
-	private ValueBasedOnLanguage title;
-
-	public ValueBasedOnLanguage getTitle() {
-		return title;
-	}
-
-	@Element(required = false, name = "Text")
-	private ValueBasedOnLanguage text;
-
+	
 	@ElementList(name = "ConditionOccurrences", required = false, inline = false, entry = "ConditionOccurrence")
-	private List<Occurences> occurences;
-
-	public List<Occurences> getOccurences() {
-		return occurences;
+	@Override
+	public ArrayList<ConditionOccurence> getOccurences() {
+		return (ArrayList<ConditionOccurence>)super.getOccurences();
 	}
-
-	public ValueBasedOnLanguage getText() {
-		return text;
-	}
-
+	
 }

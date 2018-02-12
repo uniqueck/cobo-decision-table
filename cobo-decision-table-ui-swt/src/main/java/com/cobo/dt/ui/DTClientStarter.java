@@ -2,6 +2,8 @@ package com.cobo.dt.ui;
 
 import org.eclipse.swt.widgets.Display;
 
+import com.cobo.dt.ui.DTDialog;
+import com.cobo.dt.ui.DTDialogParameter;
 import com.gorob.client.logging.MemoryLogging;
 
 public class DTClientStarter {

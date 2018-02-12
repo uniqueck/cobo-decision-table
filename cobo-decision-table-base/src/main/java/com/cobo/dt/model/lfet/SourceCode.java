@@ -3,24 +3,29 @@ package com.cobo.dt.model.lfet;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false)
-public class SourceCode extends ValueBasedOnLanguage {
-
-	public SourceCode(@Attribute(required = true, name="codeLanguage") String language) {
-		super(language);
-	}
-	
+@Root(strict = false, name="SourceCode")
+public class SourceCode extends AbstractValue {
 	@Attribute(required = true, name = "codeLanguage")	
-	@Override
-	public String getLanguage() {
-		return super.getLanguage();
+	private String codeLanguage;
+
+	@Attribute(required = true, name = "sourceCodeType")	
+	private String sourceCodeType;
+
+	public SourceCode() {
+		this(null, null, null);
 	}
 	
-	@Attribute(required = false, name = "SourceCode")
-	private String content;
+	public SourceCode(String codeLanguage, String sourceCodeType, String value) {
+		super(value);
+		this.codeLanguage = codeLanguage;
+		this.sourceCodeType = sourceCodeType;
+	}
 	
-
+	public String getCodeLanguage() {
+		return codeLanguage;
+	}
 	
-	
-	
+	public String getSourceCodeType() {
+		return sourceCodeType;
+	}
 }

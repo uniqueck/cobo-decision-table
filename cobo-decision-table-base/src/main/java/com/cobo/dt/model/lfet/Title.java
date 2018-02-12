@@ -1,16 +1,14 @@
 package com.cobo.dt.model.lfet;
 
-import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false)
-public class Title {
-
-	@Attribute(required = true, name = "language")
-	private String language;
-
-	public String getLanguage() {
-		return language;
+@Root(strict = false, name="Title")
+public class Title extends AbstractValueBasedOnLanguage {
+	public Title(String language, String value) {
+		super(language, value);
 	}
 	
+	public Title() {
+		this(null, null);
+	}
 }
