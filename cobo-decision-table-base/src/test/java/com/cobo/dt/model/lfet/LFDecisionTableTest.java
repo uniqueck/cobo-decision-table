@@ -110,20 +110,7 @@ public class LFDecisionTableTest {
 		assertEquals(19, lfet.getRules().size());
 
 		assertConditions(lfet.getConditions());
-
 	}
-	
-	@Test
-	public void testLFDT_Test() throws Exception {
-		LFDecisionTable lfet = new Persister().read(LFDecisionTable.class,
-				new File("src/test/resources/Test.lfet"));
-		Assert.assertNotNull(lfet);
-		assertEquals("LF-ET 2.1.5 (170306b)", lfet.getVersion());
-		assertEquals("2017.09.08 at 13:21:39 CEST", lfet.getSaveDate());
-		assertEquals("German", lfet.getLanguage());
-		assertEquals("constantin", lfet.getSaveUser());
-	}
-	
 	
 	@Test
 	public void testLFDT_StateMachine_1_Eng() throws Exception {
