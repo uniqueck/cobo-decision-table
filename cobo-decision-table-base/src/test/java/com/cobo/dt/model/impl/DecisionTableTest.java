@@ -1,17 +1,32 @@
 package com.cobo.dt.model.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+
+import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+import org.simpleframework.xml.core.Persister;
 
 import com.cobo.dt.model.IActionDefinition;
 import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRule;
 
 public class DecisionTableTest {
+	
+	@Rule
+	public TemporaryFolder temporaryFolder = new TemporaryFolder(new File("."));
+	
 	private DecisionTable createUnderTest() {
 		return new DecisionTable();
 	}
@@ -172,4 +187,36 @@ public class DecisionTableTest {
 		     + "Angaben vervollständigen      -  -  X  X  -  -  -  -  " + System.lineSeparator()
 		     + "Mitteilen: nicht lieferbar    -  -  -  -  X  X  X  X  " + System.lineSeparator();
 	}
+	
+	
+	@Test
+	@Ignore // FIXME uId is generated, so we can't compare with static one	
+	public void testSaveToXML() throws Exception {
+		DecisionTable dt = createUnderTest_With3ConditionsAnd4Actions();
+		StringWriter out = new StringWriter();
+		new Persister().write(dt, out);
+		String xml = out.toString();
+		assertNotNull(xml);
+		assertFalse(xml.isEmpty());
+		assertEquals(readFile2String(), xml);
+	}
+	
+	
+	public String readFile2String() throws Exception {
+		StringBuffer stringBuffer = new StringBuffer();
+		try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("DecisionTableToXMLTest.xml")) {
+			
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
+			
+			String line = null;
+			while ((line = bufferedReader.readLine()) != null) {
+				stringBuffer.append(line);
+				stringBuffer.append(System.lineSeparator());
+			}			
+			resourceAsStream.close();
+		} 
+		return stringBuffer.toString();
+	}
+	
+	
 }

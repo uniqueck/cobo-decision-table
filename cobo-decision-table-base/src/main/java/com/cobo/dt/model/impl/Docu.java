@@ -1,8 +1,11 @@
 package com.cobo.dt.model.impl;
 
+import org.simpleframework.xml.Element;
+
 import com.cobo.dt.model.IDocu;
 
 public class Docu implements IDocu {
+	@Element(required = false, data = true, name = "description")
 	private String description;
 
 	public Docu() {

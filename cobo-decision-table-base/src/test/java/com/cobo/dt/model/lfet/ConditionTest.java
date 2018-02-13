@@ -5,6 +5,7 @@ import static org.junit.Assert.assertSame;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
@@ -12,8 +13,8 @@ import org.simpleframework.xml.core.Persister;
 public class ConditionTest {
 	private static String NEW_LINE = "\n";
 	
-	private Condition createUnderTest(String uid, Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<ConditionOccurence> occurences) {
-		return new Condition(uid, title, text, sourceCodes, occurences);
+	private Condition createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ConditionOccurence> occurences) {
+		return new Condition(uid, title, text, occurences, sourceCodes);
 	}
 
 	private String createExpectedXml_withoutOccurences() {
@@ -22,6 +23,7 @@ public class ConditionTest {
 		     + "   <Text value='docuText' language='English'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem' codeLanguage='Perl' sourceCodeType='LogArg'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem = ();' codeLanguage='Perl' sourceCodeType='Prolog'/>" + NEW_LINE
+		     + "   <ConditionOccurrences/>" + NEW_LINE
 		     + "</condition>";
 	}
 	

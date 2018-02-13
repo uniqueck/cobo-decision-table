@@ -1,10 +1,16 @@
 package com.cobo.dt.model.impl;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementUnion;
+
 import com.cobo.dt.model.IDocu;
 import com.cobo.dt.model.IRulePartValue;
 
 public class RulePartValue implements IRulePartValue {
+	@Attribute
 	private String value;
+	@ElementUnion({@Element(required = false, data = true, name = "documentation", type = Docu.class)})
 	private IDocu documentation;
 	
 	public RulePartValue(String value) {

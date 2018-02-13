@@ -3,10 +3,14 @@ package com.cobo.dt.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.ElementListUnion;
+
 import com.cobo.dt.model.IRulePartValue;
 import com.cobo.dt.model.IRulePartValueSet;
 
 public class RulePartValueSet implements IRulePartValueSet {
+	@ElementListUnion({@ElementList(inline = true, required = false, type = RulePartValue.class, empty = true)}) 
 	private List<IRulePartValue> values;
 	
 	public RulePartValueSet() {

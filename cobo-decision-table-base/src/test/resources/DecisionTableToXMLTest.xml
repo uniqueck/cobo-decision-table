@@ -1,0 +1,1661 @@
+<decisionTable title="">
+   <decisionTableDefinition>
+      <conditionDefinition id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </conditionDefinition>
+      <conditionDefinition id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </conditionDefinition>
+      <conditionDefinition id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </conditionDefinition>
+      <actionDefinition id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </actionDefinition>
+      <actionDefinition id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </actionDefinition>
+      <actionDefinition id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </actionDefinition>
+      <actionDefinition id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+         <valueSet>
+            <rulePartValue value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+            <rulePartValue value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </rulePartValue>
+         </valueSet>
+         <documentation>
+            <description><![CDATA[]]></description>
+         </documentation>
+      </actionDefinition>
+   </decisionTableDefinition>
+   <rule>
+      <id>9aadc8b3-8e66-4f96-be22-edb942dcd77d</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>111411cc-1f3c-4832-9643-cb659bdf7a25</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>b7cd99dd-a745-41e7-b2a7-89eb6e28a0e3</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>498ac6c6-bf1c-462f-8f2c-0a29d0c604d5</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>8addb600-12e2-48b6-a203-3429b8b357d8</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>d4381139-3a08-4922-8ad5-11cb5f708435</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>ef24ebca-460e-4dee-93fb-6377e035b1f4</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="Y">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <rule>
+      <id>e06413da-cdd8-4dd7-8fef-af0459dda1af</id>
+      <conditions class="java.util.ArrayList">
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="25d7c6cb-9ea3-47bd-acce-ba7f6d64b269" title="Lieferfähig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="ccae62f9-6c6d-4937-919d-033f242dc043" title="Angaben vollständig?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+         <ICondition class="com.cobo.dt.model.impl.Condition">
+            <definition class="com.cobo.dt.model.impl.ConditionDefinition" id="72099b11-a6eb-44ff-83fb-511a0a0bf197" title="Bonität in Ordnung?">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="Y">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="N">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="N">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </ICondition>
+      </conditions>
+      <actions class="java.util.ArrayList">
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="3447eec5-f719-46c5-bd93-39c9ef6cfd06" title="Lieferung mit Rechnung">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="997c9248-c140-4e58-82df-8fada651d66f" title="Lieferung als Nachnahme">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="82c5e322-3501-4fe4-a054-e0285b0946db" title="Angaben vervollständigen">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="-">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+         <IAction class="com.cobo.dt.model.impl.Action">
+            <definition class="com.cobo.dt.model.impl.ActionDefinition" id="c9a520ab-9f2d-4f81-b13d-aebad94f9daf" title="Mitteilen: nicht lieferbar">
+               <valueSet>
+                  <rulePartValue value="-">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+                  <rulePartValue value="X">
+                     <documentation>
+                        <description><![CDATA[]]></description>
+                     </documentation>
+                  </rulePartValue>
+               </valueSet>
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </definition>
+            <value class="com.cobo.dt.model.impl.RulePartValue" value="X">
+               <documentation>
+                  <description><![CDATA[]]></description>
+               </documentation>
+            </value>
+         </IAction>
+      </actions>
+   </rule>
+   <documentation>
+      <description><![CDATA[]]></description>
+   </documentation>
+</decisionTable>

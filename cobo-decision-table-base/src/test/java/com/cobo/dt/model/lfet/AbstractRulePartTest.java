@@ -5,6 +5,7 @@ import static org.junit.Assert.assertSame;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
@@ -12,8 +13,8 @@ import org.simpleframework.xml.core.Persister;
 public class AbstractRulePartTest {
 	private static String NEW_LINE = "\n";
 	
-	private AbstractRulePart<AbstractOccurence> createUnderTest(String uid, Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<AbstractOccurence> occurences) {
-		return new AbstractRulePart<AbstractOccurence>(uid, title, text, sourceCodes, occurences) {};
+	private AbstractRulePart<AbstractOccurence> createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<AbstractOccurence> occurences) {
+		return new AbstractRulePart<AbstractOccurence>(uid, title, text, occurences, sourceCodes) {};
 	}
 	
 	private String createExpectedXml_withoutOccurences() {
@@ -40,12 +41,12 @@ public class AbstractRulePartTest {
 		Text text = new Text("English", "docuText");
 		
 		SourceCode sourceCode = new SourceCode("Perl", "LogArg", "$foundItem");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode);
 		
-		ArrayList<AbstractOccurence> occurences = new ArrayList<AbstractOccurence>();
+		List<AbstractOccurence> occurences = new ArrayList<AbstractOccurence>();
 		
-		AbstractRulePart<AbstractOccurence> rulePart = new AbstractRulePart<AbstractOccurence>(uid, title, text, sourceCodes, occurences) {};
+		AbstractRulePart<AbstractOccurence> rulePart = new AbstractRulePart<AbstractOccurence>(uid, title, text, occurences, sourceCodes) {};
 		
 		assertSame(uid, rulePart.getUId());
 		assertSame(title, rulePart.getTitle());
@@ -58,7 +59,7 @@ public class AbstractRulePartTest {
 	public void testPersistModel_withoutOccurences() throws Exception {
 		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
 		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 		

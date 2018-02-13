@@ -22,6 +22,7 @@ public class ActionTest {
 		     + "   <Text value='docuText' language='English'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem' codeLanguage='Perl' sourceCodeType='LogArg'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem = ();' codeLanguage='Perl' sourceCodeType='Prolog'/>" + NEW_LINE
+		     + "   <ActionOccurrences/>" +NEW_LINE
 		     + "</action>";
 	}
 
