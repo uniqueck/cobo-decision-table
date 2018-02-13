@@ -8,7 +8,9 @@
   <modules>
   	<module>cobo-decision-table-base</module>
   	<module>cobo-decision-table-ui</module>
+  	<!-- ignore module until we have got swt-jface-mvc working to deploy to maven central 
   	<module>cobo-decision-table-ui-swt</module>
+  	 -->
   </modules>
   
   <properties>
