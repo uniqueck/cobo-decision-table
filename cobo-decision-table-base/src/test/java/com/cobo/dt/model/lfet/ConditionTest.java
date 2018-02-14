@@ -62,10 +62,10 @@ public class ConditionTest {
 		Title title = new Title("English", "title");
 		Text text = new Text("English", "docuText");
 		SourceCode sourceCode = new SourceCode("Perl", "LogArg", "$foundItem");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode);
 
-		ArrayList<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
+		List<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
 		
 		Condition condition = createUnderTest(uid, title, text, sourceCodes, occurences);
 		
@@ -80,7 +80,7 @@ public class ConditionTest {
 	public void testPersistModel_withoutOccurences() throws Exception {
 		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
 		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 		
@@ -95,13 +95,13 @@ public class ConditionTest {
 	public void testPersistModel_withOccurences() throws Exception {
 		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
 		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 
 		ConditionOccurence occurence1 = new ConditionOccurence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
 		ConditionOccurence occurence2 = new ConditionOccurence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
-		ArrayList<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
+		List<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
 		occurences.add(occurence1);
 		occurences.add(occurence2);
 		

@@ -10,21 +10,24 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false)
 public class Condition extends AbstractRulePart<ConditionOccurence> {
-
-	public Condition() {
-		this(null, null, null, null, null);
-	}
-
-	public Condition(@Attribute(name = "uId", required = true) String uid, @Element(name = "Title") Title title,
-			@Element(name = "Text", required = false) Text text,
-			@Path(value = "ConditionOccurrences") @ElementList(required = false, inline = true, entry = "ConditionOccurrence") List<ConditionOccurence> occurences,
-			@ElementList(required = false, entry = "SourceCode", inline = true) List<SourceCode> sourceCodes) {
+	public Condition(
+			@Attribute(name = "uId", required = true) 
+			String uid, 
+			@Element(name = "Title") 
+			Title title,
+			@Element(name = "Text", required = false) 
+			Text text,
+			@Path(value = "ConditionOccurrences") @ElementList(required = false, inline = true, entry = "ConditionOccurrence") 
+			List<ConditionOccurence> occurences,
+			@ElementList(required = false, entry = "SourceCode", inline = true) 
+			List<SourceCode> sourceCodes
+		) {
 		super(uid, title, text, occurences, sourceCodes);
 	}
 
+	@Override
 	@Path(value = "ConditionOccurrences")
 	@ElementList(entry = "ConditionOccurrence", required = false, inline = true)
-	@Override
 	public List<ConditionOccurence> getOccurences() {
 		return super.getOccurences();
 	}

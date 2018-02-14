@@ -18,11 +18,10 @@ public abstract class AbstractOccurence {
 	@Element(name = "SourceCode", required = false)
 	private SourceCode sourceCode;
 	
-	public AbstractOccurence() {
-		this(null, null, null, null);
-	}
-	
-	public AbstractOccurence(String uid, Symbol symbol, Title title, SourceCode sourceCode) {
+	public AbstractOccurence(@Attribute(required = true, name = "uId") String uid, 
+			@Element(required = true, name = "Symbol") Symbol symbol, 
+			@Element(required = true, name = "Title") Title title, 
+			@Element(name = "SourceCode", required = false) SourceCode sourceCode) {
 		this.uid = uid;
 		this.symbol = symbol;
 		this.title = title;
