@@ -22,10 +22,10 @@ public class LFDecisionTable {
 	@Attribute(required = true, name = "saveDate")
 	private String saveDate;
 
-	@Element(required = true, name = "Title")
+	@Element(required = false, name = "Title")
 	private Title title;
 
-	@Element(required = true, name = "Text")
+	@Element(required = false, name = "Text")
 	private Text text;
 
 	@Path("Conditions")
@@ -33,7 +33,7 @@ public class LFDecisionTable {
 	private List<Condition> conditions;
 
 	@Path("Actions")
-	@ElementList(required = false, entry = "Action", inline = true)
+	@ElementList(entry = "Action", inline = true)
 	private List<Action> actions;
 
 	@ElementList(required = false, name = "Rules")
@@ -46,14 +46,17 @@ public class LFDecisionTable {
 		this(null, null, null, null, null, null, null, null, null, null);
 	}
 
-	public LFDecisionTable(@Attribute(required = true, name = "version") String version,
+	public LFDecisionTable(
+			@Attribute(required = true, name = "version") String version,
 			@Attribute(required = true, name = "language") String language,
 			@Attribute(required = true, name = "saveUser") String saveUser,
 			@Attribute(required = true, name = "saveDate") String saveDate,
-			@Element(required = false, name = "Title") Title title, @Element(required = false, name = "Text") Text text,
-			@ElementList(inline = true, required = false) List<SourceCode> sourceCodes,
+			@Element(required = false, name = "Title") Title title, 
+			@Element(required = false, name = "Text") Text text,
+			@ElementList(inline = true, required = false, name = "SourceCode") List<SourceCode> sourceCodes,
 			@Path("Conditions") @ElementList(entry = "Condition", inline = true) List<Condition> conditions,
-			@Path("Actions") @ElementList(inline = true, entry = "Action") List<Action> actions, List<Rule> rules) {
+			@Path("Actions") @ElementList(entry = "Action", inline = true) List<Action> actions, 
+			List<Rule> rules) {
 		this.version = version;
 		this.title = title;
 		this.text = text;

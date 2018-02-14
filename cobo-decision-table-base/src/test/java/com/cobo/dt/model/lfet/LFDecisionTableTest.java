@@ -18,7 +18,7 @@ public class LFDecisionTableTest {
 	private static String NEW_LINE = "\n";
 
 	private LFDecisionTable createUnderTest(String version, String language, String saveUser, String saveDate,
-			Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<Condition> conditions, ArrayList<Action> actions, ArrayList<Rule> rules) {
+			Title title, Text text, List<SourceCode> sourceCodes, List<Condition> conditions, List<Action> actions, List<Rule> rules) {
 		return new LFDecisionTable(version, language, saveUser, saveDate,
 				title, text, sourceCodes, conditions, actions, rules);
 	}
@@ -46,10 +46,10 @@ public class LFDecisionTableTest {
 	public void testLFDecisionTable() throws Exception {
 		Title title = new Title("English", "title");
 		Text text = new Text("English", "text");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
-		ArrayList<Condition> conditions = new ArrayList<Condition>();
-		ArrayList<Action> actions = new ArrayList<Action>();
-		ArrayList<Rule> rules = new ArrayList<Rule>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<Condition> conditions = new ArrayList<Condition>();
+		List<Action> actions = new ArrayList<Action>();
+		List<Rule> rules = new ArrayList<Rule>();
 		
 		LFDecisionTable dt = createUnderTest("version", "English", "user", "date",
 				title, text, sourceCodes,
@@ -71,10 +71,10 @@ public class LFDecisionTableTest {
 	public void testPersistModel() throws Exception {
 		Title title = new Title("English", "title");
 		Text text = new Text("English", "text");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
-		ArrayList<Condition> conditions = new ArrayList<Condition>();
-		ArrayList<Action> actions = new ArrayList<Action>();
-		ArrayList<Rule> rules = new ArrayList<Rule>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<Condition> conditions = new ArrayList<Condition>();
+		List<Action> actions = new ArrayList<Action>();
+		List<Rule> rules = new ArrayList<Rule>();
 		
 		LFDecisionTable dt = createUnderTest("version", "English", "user", "date",
 				title, text, sourceCodes,

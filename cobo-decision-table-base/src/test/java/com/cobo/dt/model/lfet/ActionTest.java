@@ -5,6 +5,7 @@ import static org.junit.Assert.assertSame;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
@@ -12,7 +13,7 @@ import org.simpleframework.xml.core.Persister;
 public class ActionTest {
 	private static String NEW_LINE = "\n";
 	
-	private Action createUnderTest(String uid, Title title, Text text, ArrayList<SourceCode> sourceCodes, ArrayList<ActionOccurence> occurences) {
+	private Action createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ActionOccurence> occurences) {
 		return new Action(uid, title, text, sourceCodes, occurences);
 	}
 
@@ -61,10 +62,10 @@ public class ActionTest {
 		Text text = new Text("English", "docuText");
 		
 		SourceCode sourceCode = new SourceCode("Perl", "LogArg", "$foundItem");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode);
 
-		ArrayList<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
+		List<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
 		
 		Action action = createUnderTest(uid, title, text, sourceCodes, occurences);
 		
@@ -79,7 +80,7 @@ public class ActionTest {
 	public void testPersistModel_withoutOccurences() throws Exception {
 		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
 		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 
@@ -94,13 +95,13 @@ public class ActionTest {
 	public void testPersistModel_withOccurences() throws Exception {
 		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
 		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
-		ArrayList<SourceCode> sourceCodes = new ArrayList<SourceCode>();
+		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 
 		ActionOccurence occurence1 = new ActionOccurence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
 		ActionOccurence occurence2 = new ActionOccurence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
-		ArrayList<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
+		List<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
 		occurences.add(occurence1);
 		occurences.add(occurence2);
 		
