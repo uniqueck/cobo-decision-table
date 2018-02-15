@@ -15,12 +15,12 @@
 					<children>
 						<MenuBar fx:id="menuBar" layoutY="0.0" prefWidth="600.0" useSystemMenuBar="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0">
 							<menus>
-								<Menu text="File" mnemonicParsing="false">
+								<Menu text="_File" mnemonicParsing="true">
 									<items>
-										<MenuItem text="Open" onAction="#handleOpen" mnemonicParsing="false"/>
-										<MenuItem text="Save" onAction="#handleSave" mnemonicParsing="false" />
+										<MenuItem text="_Open" onAction="#handleOpen" mnemonicParsing="true" accelerator="CTRL+O"/>
+										<MenuItem text="_Save" onAction="#handleSave" mnemonicParsing="true" accelerator="CTRL+S"/>
 										<SeparatorMenuItem />
-										<MenuItem text="Close" onAction="#handleExit" />
+										<MenuItem text="Close" onAction="#handleExit" accelerator="CTRL+Q" />
 									</items>
 								</Menu>
 								<Menu mnemonicParsing="false" text="Hilfe">
@@ -32,7 +32,7 @@
 						</MenuBar>						
 					</children>
 				</AnchorPane>
-				<AnchorPane fx:id="overview" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />	
+				<AnchorPane fx:id="overview" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />		
 			</items>
 		</SplitPane>
 	
