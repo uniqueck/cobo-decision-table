@@ -1,4 +1,4 @@
-package com.cobo.dt.model.lfet;
+package com.cobo.dt.model.lfdt;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;

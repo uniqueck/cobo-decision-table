@@ -1,4 +1,4 @@
-package com.cobo.dt.model.lfet;
+package com.cobo.dt.model.lfdt;
 
 import java.util.List;
 

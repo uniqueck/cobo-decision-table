@@ -1,10 +1,12 @@
 package com.cobo.dt.model.impl;
 
+import org.simpleframework.xml.Attribute;
+
 import com.cobo.dt.model.AbstractRulePartDefinition;
 import com.cobo.dt.model.IConditionDefinition;
 
 public class ConditionDefinition extends AbstractRulePartDefinition implements IConditionDefinition {
-	public ConditionDefinition(String id, String initialText) {
+	public ConditionDefinition(@Attribute(name = "id")String id, @Attribute(name = "title")String initialText) {
 		super(id, initialText);
 	}
 	

@@ -18,7 +18,7 @@ public abstract class AbstractRulePartDefinition implements IRulePartDefinition 
 	@ElementUnion({@Element(required = false, type = Docu.class, name = "documentation")})
 	private IDocu documentation;
 
-	public AbstractRulePartDefinition(String id, String initialText) {
+	public AbstractRulePartDefinition(String id,String initialText) {
 		this.id = id;
 		this.text = initialText;
 		this.valueSet = new RulePartValueSet();
