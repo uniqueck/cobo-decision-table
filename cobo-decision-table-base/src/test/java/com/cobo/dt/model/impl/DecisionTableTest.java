@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -23,14 +22,14 @@ import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRule;
 
 public class DecisionTableTest {
-	
+
 	@Rule
 	public TemporaryFolder temporaryFolder = new TemporaryFolder(new File("."));
-	
+
 	private DecisionTable createUnderTest() {
 		return new DecisionTable();
 	}
-	
+
 	private DecisionTable createUnderTest_With3ConditionsAnd4Actions() {
 		TestModelCreator testModelCreator = new TestModelCreator();
 		return testModelCreator.createDecisionTable_With3ConditionsAnd4Actions();
@@ -116,9 +115,9 @@ public class DecisionTableTest {
 		DecisionTable decisionTable = createUnderTest();
 		assertTrue(decisionTable.getDefinition().getActionDefinitions().isEmpty());
 		assertTrue(decisionTable.getDefinition().getConditionDefinitions().isEmpty());
-		
+
 		decisionTable.initDefault();
-		
+
 		assertEquals(1, decisionTable.getDefinition().getConditionDefinitions().size());
 		assertEquals("New Condition", decisionTable.getDefinition().getConditionDefinitions().get(0).getText());
 		assertEquals(2, decisionTable.getDefinition().getActionDefinitions().size());
@@ -128,14 +127,16 @@ public class DecisionTableTest {
 		assertEquals(2, decisionTable.getRules().size());
 		IRule rule1 = decisionTable.getRules().get(0);
 		assertEquals(1, rule1.getConditions().size());
-		assertEquals(IConditionDefinition.DEFAULT_VALUE_CONDITION_YES, rule1.getConditions().get(0).getValue().getValue());
+		assertEquals(IConditionDefinition.DEFAULT_VALUE_CONDITION_YES,
+				rule1.getConditions().get(0).getValue().getValue());
 		assertEquals(2, rule1.getActions().size());
 		assertEquals(IActionDefinition.DEFAULT_VALUE_ACTION_SET, rule1.getActions().get(0).getValue().getValue());
 		assertEquals(IActionDefinition.DONT_CARE_VALUE, rule1.getActions().get(1).getValue().getValue());
-		
+
 		IRule rule2 = decisionTable.getRules().get(1);
 		assertEquals(1, rule2.getConditions().size());
-		assertEquals(IConditionDefinition.DEFAULT_VALUE_CONDITION_NO, rule2.getConditions().get(0).getValue().getValue());
+		assertEquals(IConditionDefinition.DEFAULT_VALUE_CONDITION_NO,
+				rule2.getConditions().get(0).getValue().getValue());
 		assertEquals(2, rule2.getActions().size());
 		assertEquals(IActionDefinition.DONT_CARE_VALUE, rule2.getActions().get(0).getValue().getValue());
 		assertEquals(IActionDefinition.DEFAULT_VALUE_ACTION_SET, rule2.getActions().get(1).getValue().getValue());
@@ -162,7 +163,7 @@ public class DecisionTableTest {
 		assertEquals("", decisionTable.paddingRight("", 0));
 		assertEquals(" ", decisionTable.paddingRight("", 1));
 		assertEquals("     ", decisionTable.paddingRight("", 5));
-		
+
 		assertEquals("", decisionTable.paddingRight(null, 0));
 		assertEquals("      ", decisionTable.paddingRight(null, 6));
 		assertEquals("       ", decisionTable.paddingRight(null, 7));
@@ -179,18 +180,16 @@ public class DecisionTableTest {
 
 	private String expectedDecisionTableAsString() {
 		return "Lieferfähig?                  Y  Y  Y  Y  N  N  N  N  " + System.lineSeparator()
-			 + "Angaben vollständig?          Y  Y  N  N  Y  Y  N  N  " + System.lineSeparator()
-		     + "Bonität in Ordnung?           Y  N  Y  N  Y  N  Y  N  " + System.lineSeparator()
-		     + System.lineSeparator()
-	         + "Lieferung mit Rechnung        X  -  -  -  -  -  -  -  " + System.lineSeparator()
-		     + "Lieferung als Nachnahme       -  X  -  -  -  -  -  -  " + System.lineSeparator()
-		     + "Angaben vervollständigen      -  -  X  X  -  -  -  -  " + System.lineSeparator()
-		     + "Mitteilen: nicht lieferbar    -  -  -  -  X  X  X  X  " + System.lineSeparator();
+				+ "Angaben vollständig?          Y  Y  N  N  Y  Y  N  N  " + System.lineSeparator()
+				+ "Bonität in Ordnung?           Y  N  Y  N  Y  N  Y  N  " + System.lineSeparator()
+				+ System.lineSeparator() + "Lieferung mit Rechnung        X  -  -  -  -  -  -  -  "
+				+ System.lineSeparator() + "Lieferung als Nachnahme       -  X  -  -  -  -  -  -  "
+				+ System.lineSeparator() + "Angaben vervollständigen      -  -  X  X  -  -  -  -  "
+				+ System.lineSeparator() + "Mitteilen: nicht lieferbar    -  -  -  -  X  X  X  X  "
+				+ System.lineSeparator();
 	}
-	
-	
+
 	@Test
-	@Ignore // FIXME uId is generated, so we can't compare with static one	
 	public void testSaveToXML() throws Exception {
 		DecisionTable dt = createUnderTest_With3ConditionsAnd4Actions();
 		StringWriter out = new StringWriter();
@@ -198,25 +197,38 @@ public class DecisionTableTest {
 		String xml = out.toString();
 		assertNotNull(xml);
 		assertFalse(xml.isEmpty());
-		assertEquals(readFile2String(), xml);
+		assertEquals(readFile2String(), deleteUUIDsInXmlForCompare(xml));
 	}
-	
-	
+
+	@Test
+	public void testReadFromXML() throws Exception {
+		DecisionTable dt = createUnderTest_With3ConditionsAnd4Actions();
+		assertEquals(dt.toString(),
+				new Persister().read(DecisionTable.class, new File("src/test/resources/DecisionTableToXMLTest.xml")).toString());
+	}
+
+	protected String deleteUUIDsInXmlForCompare(String xml) {
+		return xml.replaceAll("(?<=id\\=\")[0-9a-z\\-]*(?=\")", "");
+	}
+
 	public String readFile2String() throws Exception {
 		StringBuffer stringBuffer = new StringBuffer();
-		try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("DecisionTableToXMLTest.xml")) {
-			
+		try (InputStream resourceAsStream = getClass().getClassLoader()
+				.getResourceAsStream("DecisionTableToXMLTest.xml")) {
+
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
-			
+
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {
+				if (stringBuffer.length() > 0) {
+					stringBuffer.append(System.lineSeparator());
+				}
 				stringBuffer.append(line);
-				stringBuffer.append(System.lineSeparator());
-			}			
+			}
 			resourceAsStream.close();
-		} 
+
+		}
 		return stringBuffer.toString();
 	}
-	
-	
+
 }

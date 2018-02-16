@@ -2,6 +2,10 @@ package com.cobo.dt.model.impl;
 
 import java.util.List;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.ElementListUnion;
+
 import com.cobo.dt.model.IAction;
 import com.cobo.dt.model.IActionDefinition;
 import com.cobo.dt.model.ICondition;
@@ -9,11 +13,15 @@ import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRule;
 
 public class Rule implements IRule {
+	@Attribute(required = true, name = "id")
 	private String id;
+	@ElementListUnion({@ElementList(inline = true, type = Condition.class)})
 	private List<ICondition> conditions;
+	@ElementListUnion({@ElementList(inline = true, type = Action.class)})
 	private List<IAction> actions;
 		
-	public Rule(String id, List<ICondition> conditions, List<IAction> actions) {
+	public Rule(@Attribute(name = "id") String id, @ElementListUnion({@ElementList(inline = true, type = Condition.class)}) List<ICondition> conditions, @ElementListUnion({@ElementList(inline = true, type = Action.class)})
+	 List<IAction> actions) {
 		this.id = id;
 		this.conditions = conditions;
 		this.actions = actions;

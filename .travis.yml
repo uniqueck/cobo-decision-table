@@ -22,4 +22,5 @@ cache:
     - '$HOME/.sonar/cache'
     
 notifications:
-  email: false    
+  email: false
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify

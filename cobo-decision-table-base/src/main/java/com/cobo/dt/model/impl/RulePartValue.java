@@ -13,7 +13,7 @@ public class RulePartValue implements IRulePartValue {
 	@ElementUnion({@Element(required = false, data = true, name = "documentation", type = Docu.class)})
 	private IDocu documentation;
 	
-	public RulePartValue(String value) {
+	public RulePartValue(@Attribute(name = "value") String value) {
 		this.value = value;
 		this.documentation = new Docu();
 	}

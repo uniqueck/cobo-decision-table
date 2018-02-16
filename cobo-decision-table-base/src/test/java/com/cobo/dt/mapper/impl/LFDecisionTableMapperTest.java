@@ -12,7 +12,7 @@ import com.cobo.dt.model.IActionDefinition;
 import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRulePartValue;
 import com.cobo.dt.model.impl.DecisionTable;
-import com.cobo.dt.model.lfet.LFDecisionTable;
+import com.cobo.dt.model.lfdt.LFDecisionTable;
 
 public class LFDecisionTableMapperTest {
 
