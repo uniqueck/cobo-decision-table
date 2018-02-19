@@ -173,7 +173,7 @@ public class LFDecisionTableTest {
 		assertNotNull(conditionOccurenceLink.getConditionOccurrence());
 		assertSame(lfet.getConditions().get(0).getOccurences().get(0), conditionOccurenceLink.getConditionOccurrence());
 		
-		assertNull(rule.getActionLinks());
+		assertNotNull(rule.getActionLinks());
 		
 		assertNotNull(rule.getActionnOccurrenceLinks());
 		assertEquals(1, rule.getActionnOccurrenceLinks().size());

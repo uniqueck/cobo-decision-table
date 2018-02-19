@@ -17,4 +17,6 @@ public class Action extends AbstractRulePart<IActionDefinition> implements IActi
 	public IActionDefinition getDefinition() {
 		return super.getDefinition();
 	}
+	
+	
 }

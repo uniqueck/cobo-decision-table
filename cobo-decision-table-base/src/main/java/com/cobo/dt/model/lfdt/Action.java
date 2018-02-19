@@ -40,7 +40,12 @@ public class Action extends AbstractRulePart<ActionOccurrence> {
 	}
 	
 	@Commit
-	public void commit(Map session) {
+	public void commit(Map<String,Object> session) {
 		session.put(getUId(), this);
+		if (getOccurences() != null) {
+			for (ActionOccurrence eachOcc : getOccurences()) {
+				eachOcc.setAction(this);
+			}
+		}
 	}
 }
