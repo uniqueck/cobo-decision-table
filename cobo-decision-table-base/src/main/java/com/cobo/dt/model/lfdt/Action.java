@@ -10,22 +10,35 @@ import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.core.Commit;
 
-@Root(strict = false)
+@Root
 public class Action extends AbstractRulePart<ActionOccurrence> {
-	public Action(@Attribute(name = "uId") String uid, @Element(required = true, name = "Title") Title title,
-			@Element(required = false, name = "Text") Text text,
-			@ElementList(required = false, entry = "SourceCode", inline = true) List<SourceCode> sourceCodes,
-			@Path(value = "ActionOccurrences") @ElementList(required = false, inline = true, entry = "ActionOccurrence") List<ActionOccurrence> occurences) {
-		super(uid, title, text, occurences, sourceCodes);
+	public Action(
+			@Attribute(name = "uId") 
+			String uid, 
+			
+			@Element(name = "Title") 
+			Title title,
+			
+			@Element(name = "Text", required = false) 
+			Text text,
+			
+			@ElementList(entry = "SourceCode", required = false, inline = true) 
+			List<SourceCode> sourceCodes,
+			
+			@Path(value = "ActionOccurrences") 
+			@ElementList(entry = "ActionOccurrence", required = false, inline = true) 
+			List<ActionOccurrence> occurences
+		) {
+		super(uid, title, text, sourceCodes, occurences);
 	}
 
 	@Override
 	@Path("ActionOccurrences")
-	@ElementList(required = false, inline = true, entry = "ActionOccurrence")
+	@ElementList(entry = "ActionOccurrence", required = false, inline = true)
 	public List<ActionOccurrence> getOccurences() {
 		return super.getOccurences();
 	}
-
+	
 	@Commit
 	public void commit(Map session) {
 		session.put(getUId(), this);

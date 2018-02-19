@@ -3,7 +3,7 @@ package com.cobo.dt.model.lfdt;
 import org.simpleframework.xml.Attribute;
 
 public abstract class AbstractValueBasedOnLanguage extends AbstractValue {
-	@Attribute(required = true, name = "language")
+	@Attribute(name = "language")
 	private String language;
 
 	public AbstractValueBasedOnLanguage(String language, String value) {

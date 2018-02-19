@@ -1,15 +1,15 @@
 package com.cobo.dt.model.lfdt;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false, name="Symbol")
+@Root(name="Symbol")
 public class Symbol extends AbstractValueBasedOnLanguage {
-	public Symbol(String language, String value) {
+	public Symbol(
+		@Attribute(name = "language") String language, 
+		@Attribute(name = "value") String value
+	) {
 		super(language, value);
-	}
-	
-	public Symbol() {
-		this(null,null);
-	}
+	}	
 }
 

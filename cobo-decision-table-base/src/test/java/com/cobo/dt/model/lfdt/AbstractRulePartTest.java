@@ -14,7 +14,7 @@ public class AbstractRulePartTest {
 	private static String NEW_LINE = "\n";
 	
 	private AbstractRulePart<AbstractOccurence> createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<AbstractOccurence> occurences) {
-		return new AbstractRulePart<AbstractOccurence>(uid, title, text, occurences, sourceCodes) {};
+		return new AbstractRulePart<AbstractOccurence>(uid, title, text, sourceCodes, occurences) {};
 	}
 	
 	private String createExpectedXml_withoutOccurences() {
@@ -46,7 +46,7 @@ public class AbstractRulePartTest {
 		
 		List<AbstractOccurence> occurences = new ArrayList<AbstractOccurence>();
 		
-		AbstractRulePart<AbstractOccurence> rulePart = new AbstractRulePart<AbstractOccurence>(uid, title, text, occurences, sourceCodes) {};
+		AbstractRulePart<AbstractOccurence> rulePart = new AbstractRulePart<AbstractOccurence>(uid, title, text, sourceCodes, occurences) {};
 		
 		assertSame(uid, rulePart.getUId());
 		assertSame(title, rulePart.getTitle());

@@ -14,7 +14,7 @@ public class ConditionTest {
 	private static String NEW_LINE = "\n";
 	
 	private Condition createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ConditionOccurrence> occurences) {
-		return new Condition(uid, title, text, occurences, sourceCodes);
+		return new Condition(uid, title, text, sourceCodes, occurences);
 	}
 
 	private String createExpectedXml_withoutOccurences() {

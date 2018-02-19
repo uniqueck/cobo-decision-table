@@ -3,7 +3,7 @@ package com.cobo.dt.model.lfdt;
 import org.simpleframework.xml.Attribute;
 
 public abstract class AbstractValue {
-	@Attribute(required = true, name = "value")
+	@Attribute(name = "value")
 	private String value;
 
 	public AbstractValue(String value) {

@@ -3,19 +3,19 @@ package com.cobo.dt.model.lfdt;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false, name="SourceCode")
+@Root(name="SourceCode")
 public class SourceCode extends AbstractValue {
-	@Attribute(required = true, name = "codeLanguage")	
+	@Attribute(name = "codeLanguage")
 	private String codeLanguage;
 
-	@Attribute(required = true, name = "sourceCodeType")	
+	@Attribute(name = "sourceCodeType")
 	private String sourceCodeType;
-
-	public SourceCode() {
-		this(null, null, null);
-	}
 	
-	public SourceCode(String codeLanguage, String sourceCodeType, String value) {
+	public SourceCode(
+		@Attribute(name = "codeLanguage") String codeLanguage, 
+		@Attribute(name = "sourceCodeType") String sourceCodeType, 
+		@Attribute(name = "value") String value
+	) {
 		super(value);
 		this.codeLanguage = codeLanguage;
 		this.sourceCodeType = sourceCodeType;

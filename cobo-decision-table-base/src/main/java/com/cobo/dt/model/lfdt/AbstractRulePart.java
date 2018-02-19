@@ -7,23 +7,23 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false)
+@Root
 public abstract class AbstractRulePart<T extends AbstractOccurence> {
-	@Attribute(required = true, name = "uId")
+	@Attribute(name = "uId")
 	private String uId;
 
-	@Element(required = true, name = "Title")
+	@Element(name = "Title")
 	private Title title;
 
-	@Element(required = false, name = "Text")
+	@Element(name = "Text", required = false)
 	private Text text;
 
-	@ElementList(required = false, inline = true, name = "SourceCode")
+	@ElementList(name = "SourceCode", required = false, inline = true)
 	private List<SourceCode> sourceCodes;
 
 	private List<T> occurences;
 
-	public AbstractRulePart(String uid, Title title, Text text, List<T> occurences, List<SourceCode> sourceCodes) {
+	public AbstractRulePart(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<T> occurences) {
 		this.uId = uid;
 		this.title = title;
 		this.text = text;
@@ -58,15 +58,15 @@ public abstract class AbstractRulePart<T extends AbstractOccurence> {
 	public List<SourceCode> getSourceCodes() {
 		return sourceCodes;
 	}
-
+	
 	public void setSourceCodes(List<SourceCode> sourceCodes) {
 		this.sourceCodes = sourceCodes;
 	}
-
+	
 	public List<T> getOccurences() {
 		return occurences;
 	}
-
+	
 	public void setOccurences(List<T> occurences) {
 		this.occurences = occurences;
 	}

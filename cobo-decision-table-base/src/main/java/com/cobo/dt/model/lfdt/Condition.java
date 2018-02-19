@@ -12,11 +12,24 @@ import org.simpleframework.xml.core.Commit;
 
 @Root(strict = false)
 public class Condition extends AbstractRulePart<ConditionOccurrence> {
-	public Condition(@Attribute(name = "uId", required = true) String uid, @Element(name = "Title") Title title,
-			@Element(name = "Text", required = false) Text text,
-			@Path(value = "ConditionOccurrences") @ElementList(required = false, inline = true, entry = "ConditionOccurrence") List<ConditionOccurrence> occurences,
-			@ElementList(required = false, entry = "SourceCode", inline = true) List<SourceCode> sourceCodes) {
-		super(uid, title, text, occurences, sourceCodes);
+	public Condition(
+			@Attribute(name = "uId") 
+			String uid,
+			
+			@Element(name = "Title") 
+			Title title,
+			
+			@Element(name = "Text", required = false) 
+			Text text,
+			
+			@ElementList(entry = "SourceCode", required = false, inline = true) 
+			List<SourceCode> sourceCodes,
+
+			@Path(value = "ConditionOccurrences") 
+			@ElementList(entry = "ConditionOccurrence", required = false, inline = true) 
+			List<ConditionOccurrence> occurences
+		) {
+		super(uid, title, text, sourceCodes, occurences);
 	}
 
 	@Override
@@ -30,5 +43,4 @@ public class Condition extends AbstractRulePart<ConditionOccurrence> {
 	public void commit(Map session) {
 		session.put(getUId(), this);
 	}
-
 }
