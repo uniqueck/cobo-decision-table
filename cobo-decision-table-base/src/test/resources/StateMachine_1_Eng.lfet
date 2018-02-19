@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LFET version="LF-ET 2.1.5 (171120a)" language="English" saveDate="2018.02.08 at 00:02:08 CET" saveUser="constantin">
+<LFET version="LF-ET 2.1.5 (171120a)" language="English" saveDate="2018.02.19 at 00:16:45 CET" saveUser="constantin">
   <Conditions>
     <Condition uId="11443124863866955">
       <Title language="English" value="State"/>
@@ -15,6 +15,10 @@
           <Title language="English" value="Check State"/>
         </ConditionOccurrence>
       </ConditionOccurrences>
+    </Condition>
+    <Condition uId="151899487706545">
+      <Title language="English" value="Useless Condition"/>
+      <Text language="English" value="documentation for C02"/>
     </Condition>
   </Conditions>
   <Actions>
@@ -37,15 +41,28 @@
       </ActionOccurrences>
     </Action>
   </Actions>
-  <Rules lastId="9">
-    <Rule id="9">
+  <Rules lastId="13">
+    <Rule id="10">
       <ConditionOccurrenceLink link="1518044440864158"/>
       <ActionOccurrenceLink link="1518044517087765"/>
+      <ConditionLink link="151899487706545" conditionState="true"/>
     </Rule>
-    <Rule id="8">
+    <Rule id="11">
+      <ConditionOccurrenceLink link="1518044440864158"/>
+      <ActionOccurrenceLink link="1518044517087765"/>
+      <ConditionLink link="151899487706545" conditionState="false"/>
+    </Rule>
+    <Rule id="12">
       <ActionLink link="11443124863976962"/>
       <ConditionOccurrenceLink link="1518044440865160"/>
       <ActionOccurrenceLink link="1518044470207309"/>
+      <ConditionLink link="151899487706545" conditionState="true"/>
+    </Rule>
+    <Rule id="13">
+      <ActionLink link="11443124863976962"/>
+      <ConditionOccurrenceLink link="1518044440865160"/>
+      <ActionOccurrenceLink link="1518044470207309"/>
+      <ConditionLink link="151899487706545" conditionState="false"/>
     </Rule>
   </Rules>
   <Title language="English" value="A Statemachine, only for testing purpose"/>

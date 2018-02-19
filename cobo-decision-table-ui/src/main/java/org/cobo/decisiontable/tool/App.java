@@ -1,11 +1,11 @@
-package org.ckr.lfet.ui;
+package org.cobo.decisiontable.tool;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ckr.lfet.ui.view.AppView;
+import org.cobo.decisiontable.tool.presentation.app.AppView;
 
 import com.airhacks.afterburner.injection.Injector;
 

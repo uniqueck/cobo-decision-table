@@ -16,6 +16,11 @@
 			<artifactId>afterburner.fx</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.cobo.dt</groupId>
+			<artifactId>cobo-decision-table-base</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

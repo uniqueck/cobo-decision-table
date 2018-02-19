@@ -1,4 +1,4 @@
-package org.ckr.lfet.ui.view;
+package org.cobo.decisiontable.tool.presentation.app;
 
 import com.airhacks.afterburner.views.FXMLView;
 

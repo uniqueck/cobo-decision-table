@@ -13,7 +13,7 @@ import org.simpleframework.xml.core.Persister;
 public class ConditionTest {
 	private static String NEW_LINE = "\n";
 	
-	private Condition createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ConditionOccurence> occurences) {
+	private Condition createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ConditionOccurrence> occurences) {
 		return new Condition(uid, title, text, occurences, sourceCodes);
 	}
 
@@ -65,7 +65,7 @@ public class ConditionTest {
 		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode);
 
-		List<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
+		List<ConditionOccurrence> occurences = new ArrayList<ConditionOccurrence>();
 		
 		Condition condition = createUnderTest(uid, title, text, sourceCodes, occurences);
 		
@@ -99,9 +99,9 @@ public class ConditionTest {
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 
-		ConditionOccurence occurence1 = new ConditionOccurence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
-		ConditionOccurence occurence2 = new ConditionOccurence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
-		List<ConditionOccurence> occurences = new ArrayList<ConditionOccurence>();
+		ConditionOccurrence occurence1 = new ConditionOccurrence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
+		ConditionOccurrence occurence2 = new ConditionOccurrence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
+		List<ConditionOccurrence> occurences = new ArrayList<ConditionOccurrence>();
 		occurences.add(occurence1);
 		occurences.add(occurence2);
 		

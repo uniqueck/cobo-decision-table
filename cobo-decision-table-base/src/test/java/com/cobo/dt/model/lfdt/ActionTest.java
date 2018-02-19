@@ -13,7 +13,7 @@ import org.simpleframework.xml.core.Persister;
 public class ActionTest {
 	private static String NEW_LINE = "\n";
 	
-	private Action createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ActionOccurence> occurences) {
+	private Action createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<ActionOccurrence> occurences) {
 		return new Action(uid, title, text, sourceCodes, occurences);
 	}
 
@@ -65,7 +65,7 @@ public class ActionTest {
 		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode);
 
-		List<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
+		List<ActionOccurrence> occurences = new ArrayList<ActionOccurrence>();
 		
 		Action action = createUnderTest(uid, title, text, sourceCodes, occurences);
 		
@@ -99,9 +99,9 @@ public class ActionTest {
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 
-		ActionOccurence occurence1 = new ActionOccurence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
-		ActionOccurence occurence2 = new ActionOccurence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
-		List<ActionOccurence> occurences = new ArrayList<ActionOccurence>();
+		ActionOccurrence occurence1 = new ActionOccurrence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new SourceCode("Perl", "LogArg", "sourceCode1"));
+		ActionOccurrence occurence2 = new ActionOccurrence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new SourceCode("Perl", "LogArg", "sourceCode2"));			
+		List<ActionOccurrence> occurences = new ArrayList<ActionOccurrence>();
 		occurences.add(occurence1);
 		occurences.add(occurence2);
 		
