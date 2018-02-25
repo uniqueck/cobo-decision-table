@@ -1,5 +1,5 @@
 package com.cobo.dt.model;
 
-public interface IAction extends IRulePart {
+public interface IAction extends IRulePart<IActionDefinition> {
 	
 }

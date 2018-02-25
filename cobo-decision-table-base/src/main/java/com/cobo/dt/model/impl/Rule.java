@@ -15,33 +15,34 @@ import com.cobo.dt.model.IRule;
 public class Rule implements IRule {
 	@Attribute(required = true, name = "id")
 	private String id;
-	@ElementListUnion({@ElementList(inline = true, type = Condition.class)})
+	@ElementListUnion({ @ElementList(inline = true, type = Condition.class) })
 	private List<ICondition> conditions;
-	@ElementListUnion({@ElementList(inline = true, type = Action.class)})
+	@ElementListUnion({ @ElementList(inline = true, type = Action.class) })
 	private List<IAction> actions;
-		
-	public Rule(@Attribute(name = "id") String id, @ElementListUnion({@ElementList(inline = true, type = Condition.class)}) List<ICondition> conditions, @ElementListUnion({@ElementList(inline = true, type = Action.class)})
-	 List<IAction> actions) {
+
+	public Rule(@Attribute(name = "id") String id,
+			@ElementListUnion({ @ElementList(inline = true, type = Condition.class) }) List<ICondition> conditions,
+			@ElementListUnion({ @ElementList(inline = true, type = Action.class) }) List<IAction> actions) {
 		this.id = id;
 		this.conditions = conditions;
 		this.actions = actions;
 	}
-	
+
 	@Override
 	public String getId() {
 		return id;
 	}
-	
+
 	@Override
 	public List<ICondition> getConditions() {
 		return conditions;
 	}
-	
+
 	@Override
 	public List<IAction> getActions() {
 		return actions;
 	}
-	
+
 	@Override
 	public ICondition getCondition(IConditionDefinition conditionDefinition) {
 		for (ICondition condition : getConditions()) {
@@ -51,7 +52,7 @@ public class Rule implements IRule {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public IAction getAction(IActionDefinition actionDefinition) {
 		for (IAction action : getActions()) {
@@ -61,4 +62,5 @@ public class Rule implements IRule {
 		}
 		return null;
 	}
+
 }

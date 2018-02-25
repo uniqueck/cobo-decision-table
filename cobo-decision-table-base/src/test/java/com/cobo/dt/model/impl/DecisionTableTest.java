@@ -190,25 +190,28 @@ public class DecisionTableTest {
 	}
 
 	@Test
-	public void testSaveToXML() throws Exception {
+	public void testConvertAsXmlAndReadFromXml() throws Exception {
 		DecisionTable dt = createUnderTest_With3ConditionsAnd4Actions();
 		StringWriter out = new StringWriter();
-		new Persister().write(dt, out);
+		Persister persister = new Persister();
+		persister.write(dt, out);
 		String xml = out.toString();
 		assertNotNull(xml);
 		assertFalse(xml.isEmpty());
-		assertEquals(readFile2String(), deleteUUIDsInXmlForCompare(xml));
+		assertEquals(deleteUUIDsInXmlForCompare(readFile2String()), deleteUUIDsInXmlForCompare(xml));
+		DecisionTable readedDecisionTable = persister.read(DecisionTable.class, xml);
+		assertEquals(dt.toString(), readedDecisionTable.toString());
 	}
 
 	@Test
 	public void testReadFromXML() throws Exception {
 		DecisionTable dt = createUnderTest_With3ConditionsAnd4Actions();
-		assertEquals(dt.toString(),
-				new Persister().read(DecisionTable.class, new File("src/test/resources/DecisionTableToXMLTest.xml")).toString());
+		assertEquals(dt.toString(), new Persister()
+				.read(DecisionTable.class, new File("src/test/resources/DecisionTableToXMLTest.xml")).toString());
 	}
 
 	protected String deleteUUIDsInXmlForCompare(String xml) {
-		return xml.replaceAll("(?<=id\\=\")[0-9a-z\\-]*(?=\")", "");
+		return xml.replaceAll("(?<=(id|refId)\\=\")[0-9a-z\\-]*(?=\")", "");
 	}
 
 	public String readFile2String() throws Exception {

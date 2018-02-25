@@ -9,4 +9,5 @@ public interface IRulePartValueSet {
 	IRulePartValue addValue(String value);
 	boolean containsValue(IRulePartValue rulePartValue);
 	void clearValues();
+	
 }

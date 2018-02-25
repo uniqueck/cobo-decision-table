@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.cobo.dt.model.impl.ActionDefinition;
 import com.cobo.dt.model.impl.RulePartValue;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class AbstractRulePartTest {
 	private AbstractRulePart createUnderTest(IRulePartDefinition definition) {
 		return new AbstractRulePart(definition) {};

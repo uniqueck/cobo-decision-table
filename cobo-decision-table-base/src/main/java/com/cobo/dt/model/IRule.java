@@ -7,5 +7,5 @@ public interface IRule {
 	List<ICondition> getConditions();
 	List<IAction> getActions();
 	ICondition getCondition(IConditionDefinition conditionDefinition);
-	IRulePart getAction(IActionDefinition actionDefinition);
+	IAction getAction(IActionDefinition actionDefinition);
 }

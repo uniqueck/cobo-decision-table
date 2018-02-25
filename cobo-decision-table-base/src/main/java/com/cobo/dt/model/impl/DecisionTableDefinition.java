@@ -64,7 +64,7 @@ public class DecisionTableDefinition implements IDecisionTableDefinition {
 		return UUID.randomUUID().toString();
 	}
 
-	private List<ICondition> createNewConditions() {
+	protected List<ICondition> createNewConditions() {
 		List<ICondition> conditions = new ArrayList<ICondition>();
 
 		for (IConditionDefinition conditionDefinition : getConditionDefinitions()) {

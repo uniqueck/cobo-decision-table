@@ -23,9 +23,9 @@ import com.cobo.dt.model.IRulePartValue;
 public class DecisionTable {
 	@ElementUnion({ @Element(name = "decisionTableDefinition", type = DecisionTableDefinition.class) })
 	private IDecisionTableDefinition definition;
-	@ElementListUnion({@ElementList(inline = true, type = Rule.class)})
+	@ElementListUnion({ @ElementList(inline = true, type = Rule.class) })
 	private List<IRule> rules;
-	@ElementUnion({@Element(required = false, type = Docu.class, name = "documentation")})
+	@ElementUnion({ @Element(required = false, type = Docu.class, name = "documentation") })
 	private IDocu documentation;
 
 	@Attribute(required = false, name = "title")
@@ -131,4 +131,5 @@ public class DecisionTable {
 		}
 		return buffer.toString();
 	}
+
 }

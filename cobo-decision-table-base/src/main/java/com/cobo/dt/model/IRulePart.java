@@ -1,7 +1,9 @@
 package com.cobo.dt.model;
 
-public interface IRulePart {
-	IRulePartDefinition getDefinition();
+public interface IRulePart<DEFINITION extends IRulePartDefinition> {
+	DEFINITION getDefinition();
+	void setDefinition(DEFINITION definition);
+	
 	
 	IRulePartValue getValue();
 	void setValue(IRulePartValue value);

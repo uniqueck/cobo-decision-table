@@ -16,7 +16,6 @@ import com.cobo.dt.model.IActionDefinition;
 import com.cobo.dt.model.ICondition;
 import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRule;
-import com.cobo.dt.model.IRulePartDefinition;
 import com.cobo.dt.model.IRulePartValue;
 import com.cobo.dt.model.impl.DecisionTable;
 import com.cobo.dt.model.lfdt.ActionLink;

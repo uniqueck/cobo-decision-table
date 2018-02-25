@@ -1,5 +1,5 @@
 package com.cobo.dt.model;
 
-public interface ICondition extends IRulePart {
+public interface ICondition extends IRulePart<IConditionDefinition> {
 
 }
