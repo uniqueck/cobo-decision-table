@@ -27,23 +27,27 @@ public class Action extends AbstractRulePart<ActionOccurrence> {
 			
 			@Path(value = "ActionOccurrences") 
 			@ElementList(entry = "ActionOccurrence", required = false, inline = true) 
-			List<ActionOccurrence> occurences
+			List<ActionOccurrence> occurences,
+			
+			@Path(value = "UrlsOut") 
+			@ElementList(entry = "Url", required = false, inline = true)
+			List<Url> urls
 		) {
-		super(uid, title, text, sourceCodes, occurences);
+		super(uid, title, text, sourceCodes, occurences, urls);
 	}
 
 	@Override
 	@Path("ActionOccurrences")
 	@ElementList(entry = "ActionOccurrence", required = false, inline = true)
-	public List<ActionOccurrence> getOccurences() {
-		return super.getOccurences();
+	public List<ActionOccurrence> getOccurrences() {
+		return super.getOccurrences();
 	}
 	
 	@Commit
 	public void commit(Map<String,Object> session) {
 		session.put(getUId(), this);
-		if (getOccurences() != null) {
-			for (ActionOccurrence eachOcc : getOccurences()) {
+		if (getOccurrences() != null) {
+			for (ActionOccurrence eachOcc : getOccurrences()) {
 				eachOcc.setAction(this);
 			}
 		}

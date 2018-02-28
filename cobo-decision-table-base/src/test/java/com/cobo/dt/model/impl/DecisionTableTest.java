@@ -224,7 +224,7 @@ public class DecisionTableTest {
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {
 				if (stringBuffer.length() > 0) {
-					stringBuffer.append(System.lineSeparator());
+					stringBuffer.append("\n");  // System.lineSeparator()
 				}
 				stringBuffer.append(line);
 			}

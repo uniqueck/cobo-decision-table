@@ -121,7 +121,7 @@ public class LFDecisionTableTest {
 		assertNotNull(condition);
 		assertEquals("State", condition.getTitle().getValue());
 		assertEquals("documentation for C01", condition.getText().getValue());
-		List<ConditionOccurrence> conditionOccurences = condition.getOccurences();
+		List<ConditionOccurrence> conditionOccurences = condition.getOccurrences();
 		assertNotNull(conditionOccurences);
 		assertEquals(2, conditionOccurences.size());
 		assertEquals("INIT", conditionOccurences.get(0).getSymbol().getValue());
@@ -133,7 +133,7 @@ public class LFDecisionTableTest {
 		assertNotNull(condition);
 		assertEquals("Useless Condition", condition.getTitle().getValue());
 		assertEquals("documentation for C02", condition.getText().getValue());
-		conditionOccurences = condition.getOccurences();
+		conditionOccurences = condition.getOccurrences();
 		assertNull(conditionOccurences);
 
 		assertNotNull(lfet.getActions());
@@ -142,11 +142,11 @@ public class LFDecisionTableTest {
 		assertNotNull(actions.get(0));
 		assertEquals("Useless Action", actions.get(0).getTitle().getValue());
 		assertEquals("documentation for A01", actions.get(0).getText().getValue());
-		assertNull(actions.get(0).getOccurences());
+		assertNull(actions.get(0).getOccurrences());
 		assertNotNull(actions.get(1));
 		assertEquals("State", actions.get(1).getTitle().getValue());
 		assertEquals("documentation for A02", actions.get(1).getText().getValue());
-		List<ActionOccurrence> occurences = actions.get(1).getOccurences();
+		List<ActionOccurrence> occurences = actions.get(1).getOccurrences();
 		assertNotNull(occurences);
 		assertEquals("EXIT", occurences.get(0).getSymbol().getValue());
 		assertEquals("Exit State", occurences.get(0).getTitle().getValue());
@@ -171,7 +171,7 @@ public class LFDecisionTableTest {
 		ConditionOccurrenceLink conditionOccurenceLink = rule.getConditionOccurrenceLinks().get(0);
 		assertNotNull(conditionOccurenceLink);
 		assertNotNull(conditionOccurenceLink.getConditionOccurrence());
-		assertSame(lfet.getConditions().get(0).getOccurences().get(0), conditionOccurenceLink.getConditionOccurrence());
+		assertSame(lfet.getConditions().get(0).getOccurrences().get(0), conditionOccurenceLink.getConditionOccurrence());
 		
 		assertNotNull(rule.getActionLinks());
 		
@@ -180,7 +180,7 @@ public class LFDecisionTableTest {
 		ActionOccurrenceLink actionOccurrenceLink = rule.getActionnOccurrenceLinks().get(0);
 		assertNotNull(actionOccurrenceLink);
 		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertSame(lfet.getActions().get(1).getOccurences().get(1), actionOccurrenceLink.getActionOccurrence());
+		assertSame(lfet.getActions().get(1).getOccurrences().get(1), actionOccurrenceLink.getActionOccurrence());
 		
 		rule =  rules.get(2);
 		assertNotNull(rule);
@@ -205,11 +205,11 @@ public class LFDecisionTableTest {
 
 		assertValueBasedOnLanguage(condition.getTitle(), "step");
 
-		List<ConditionOccurrence> occurences = condition.getOccurences();
+		List<ConditionOccurrence> occurences = condition.getOccurrences();
 		assertNotNull(occurences);
 		assertEquals(5, occurences.size());
 
-		AbstractOccurence occ = occurences.get(0);
+		AbstractOccurrence occ = occurences.get(0);
 		assertNotNull(occ);
 		assertEquals("1504126505502473", occ.getUId());
 		assertValueBasedOnLanguage(occ.getSymbol(), "1");

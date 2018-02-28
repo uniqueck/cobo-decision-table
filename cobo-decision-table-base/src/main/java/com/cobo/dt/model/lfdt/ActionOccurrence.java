@@ -1,23 +1,38 @@
 package com.cobo.dt.model.lfdt;
 
+import java.util.List;
 import java.util.Map;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Path;
 import org.simpleframework.xml.core.Commit;
 
-
-public class ActionOccurrence extends AbstractOccurence {
-	
+public class ActionOccurrence extends AbstractOccurrence {
 	private Action action;
 	
 	public ActionOccurrence(
-			@Attribute(name = "uId") String uid,
-			@Element(name = "Symbol") Symbol symbol, 
-			@Element(name = "Title") Title title,
-			@Element(name ="SourceCode", required = false) SourceCode sourceCode
+			@Attribute(name = "uId") 
+			String uid,
+			
+			@Element(name = "Symbol") 
+			Symbol symbol, 
+			
+			@Element(name = "Title") 
+			Title title,
+			
+			@Element(name = "Text", required = false)
+			Text text,
+			
+			@ElementList(name = "SourceCode", required = false, inline = true) 
+			List<SourceCode> sourceCodes,
+			
+			@Path(value = "UrlsOut") 
+			@ElementList(entry = "Url", required = false, inline = true)
+			List<Url> urls
 			) {
-		super(uid, symbol, title, sourceCode);
+		super(uid, symbol, title, text, sourceCodes, urls);
 		setAction(null);
 	}
 

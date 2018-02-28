@@ -90,9 +90,9 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 		dt2Map.getActions().stream().forEach(t -> {
 			IActionDefinition actionDefinition = decisionTable.getDefinition().addNewActionDefinition(t.getTitle().getValue());
 			actionDefinition.getDocumentation().setDescription(t.getText().getValue());
-			if (t.getOccurences() != null) {
+			if (t.getOccurrences() != null) {
 				actionDefinition.getValueSet().clearValues();
-				t.getOccurences().forEach(o -> {
+				t.getOccurrences().forEach(o -> {
 					IRulePartValue addValue = actionDefinition.getValueSet().addValue(o.getSymbol().getValue());
 					addValue.getDocumentation().setDescription(o.getTitle().getValue());
 				});
@@ -104,9 +104,9 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 		dt2Map.getConditions().stream().forEach(t -> {
 			IConditionDefinition addNewConditionDefinition = decisionTable.getDefinition().addNewConditionDefinition(t.getTitle().getValue());
 			addNewConditionDefinition.getDocumentation().setDescription(t.getText().getValue());
-			if (t.getOccurences() != null) {
+			if (t.getOccurrences() != null) {
 				addNewConditionDefinition.getValueSet().clearValues();
-				t.getOccurences().forEach(o -> {
+				t.getOccurrences().forEach(o -> {
 					IRulePartValue addValue = addNewConditionDefinition.getValueSet().addValue(o.getSymbol().getValue());
 					addValue.getDocumentation().setDescription(o.getTitle().getValue());
 				});

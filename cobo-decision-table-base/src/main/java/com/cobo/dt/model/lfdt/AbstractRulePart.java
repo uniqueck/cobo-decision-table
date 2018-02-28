@@ -5,30 +5,36 @@ import java.util.List;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
 @Root
-public abstract class AbstractRulePart<T extends AbstractOccurence> {
+public abstract class AbstractRulePart<T extends AbstractOccurrence> {
 	@Attribute(name = "uId")
 	private String uId;
 
 	@Element(name = "Title")
 	private Title title;
 
-	@Element(name = "Text", required = false)
-	private Text text;
+	private List<T> occurrences;
 
 	@ElementList(name = "SourceCode", required = false, inline = true)
 	private List<SourceCode> sourceCodes;
 
-	private List<T> occurences;
+	@Element(name = "Text", required = false)
+	private Text text;
+	
+	@Path(value = "UrlsOut") 
+	@ElementList(entry = "Url", required = false, inline = true) 
+	private List<Url> urls;
 
-	public AbstractRulePart(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<T> occurences) {
+	public AbstractRulePart(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<T> occurrences, List<Url> urls) {
 		this.uId = uid;
 		this.title = title;
 		this.text = text;
 		this.sourceCodes = sourceCodes;
-		this.occurences = occurences;
+		this.occurrences = occurrences;
+		this.urls = urls;
 	}
 
 	public String getUId() {
@@ -63,11 +69,19 @@ public abstract class AbstractRulePart<T extends AbstractOccurence> {
 		this.sourceCodes = sourceCodes;
 	}
 	
-	public List<T> getOccurences() {
-		return occurences;
+	public List<T> getOccurrences() {
+		return occurrences;
 	}
 	
-	public void setOccurences(List<T> occurences) {
-		this.occurences = occurences;
+	public void setOccurrences(List<T> occurrences) {
+		this.occurrences = occurrences;
+	}
+	
+	public List<Url> getUrls() {
+		return urls;
+	}
+	
+	public void setUrls(List<Url> urls) {
+		this.urls = urls;
 	}
 }

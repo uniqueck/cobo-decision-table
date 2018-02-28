@@ -10,7 +10,6 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ActionLink {
-
 	@Attribute
 	private String link;
 	

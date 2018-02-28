@@ -32,7 +32,7 @@ public class AbstractValueBasedOnLanguageTest {
 	}
 
 	@Test
-	public void testValueBasedOnLanguage() throws Exception {
+	public void testAbstractValueBasedOnLanguage() throws Exception {
 		AbstractValueBasedOnLanguage value = createUnderTest("English", null);
 		assertEquals("English", value.getLanguage());
 		assertNull(value.getValue());
@@ -43,14 +43,14 @@ public class AbstractValueBasedOnLanguageTest {
 	}
 	
 	@Test
-	public void testPersistValueBasedOnLanguage_LanguageAndValueGiven_noError() throws Exception {
+	public void testPersistAbstractValueBasedOnLanguage_LanguageAndValueGiven_noError() throws Exception {
 		AbstractValueBasedOnLanguage value = createUnderTest();
 		String xml = persist(value);
 		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
 	}
 
 	@Test
-	public void testPersistValueBasedOnLanguage_ValueNotGiven_error() throws Exception {
+	public void testPersistAbstractValueBasedOnLanguage_ValueNotGiven_error() throws Exception {
 		AbstractValueBasedOnLanguage value = createUnderTest("English", null);
 		
 		try {
@@ -62,7 +62,7 @@ public class AbstractValueBasedOnLanguageTest {
 	}
 	
 	@Test
-	public void testPersistValueBasedOnLanguage_LanguageNotGiven_error() throws Exception {
+	public void testPersistAbstractValueBasedOnLanguage_LanguageNotGiven_error() throws Exception {
 		AbstractValueBasedOnLanguage value = createUnderTest(null, "myValue");
 		
 		try {
