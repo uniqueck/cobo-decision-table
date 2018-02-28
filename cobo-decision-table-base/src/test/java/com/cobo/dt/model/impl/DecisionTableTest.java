@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,7 +23,8 @@ import com.cobo.dt.model.IConditionDefinition;
 import com.cobo.dt.model.IRule;
 
 public class DecisionTableTest {
-
+	private static final String NEW_LINE = "\n";
+	
 	@Rule
 	public TemporaryFolder temporaryFolder = new TemporaryFolder(new File("."));
 
@@ -219,12 +221,12 @@ public class DecisionTableTest {
 		try (InputStream resourceAsStream = getClass().getClassLoader()
 				.getResourceAsStream("DecisionTableToXMLTest.xml")) {
 
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream, Charset.forName("UTF-8")));
 
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {
 				if (stringBuffer.length() > 0) {
-					stringBuffer.append("\n");  // System.lineSeparator()
+					stringBuffer.append(NEW_LINE);
 				}
 				stringBuffer.append(line);
 			}
