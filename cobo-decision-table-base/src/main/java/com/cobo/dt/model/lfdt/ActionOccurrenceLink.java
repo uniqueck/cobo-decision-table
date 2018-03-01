@@ -10,12 +10,14 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ActionOccurrenceLink {
-	@Attribute
+	@Attribute(name = "link")
 	private String link;
 
 	private ActionOccurrence actionOccurrence;
 
 	public ActionOccurrenceLink() {
+		this.link = null;
+		this.actionOccurrence = null;
 	}
 
 	public ActionOccurrence getActionOccurrence() {
@@ -28,6 +30,10 @@ public class ActionOccurrenceLink {
 
 	protected String getLink() {
 		return link;
+	}
+	
+	protected void setLink(String link) {
+		this.link = link;
 	}
 	
 	@Validate

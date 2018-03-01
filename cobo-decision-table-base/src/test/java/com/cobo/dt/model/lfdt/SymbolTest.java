@@ -1,17 +1,13 @@
 package com.cobo.dt.model.lfdt;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class SymbolTest {
+public class SymbolTest extends AbstractLfdtTest<Symbol> {
 	private Symbol createUnderTest() {
 		return createUnderTest("English", "myValue");
 	}
@@ -21,32 +17,23 @@ public class SymbolTest {
 	}
 
 	private String createExpectedXml() {
-		return "<Symbol value='myValue' language='English'/>";
-	}
-
-	private String persist(Symbol symbol) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(symbol, out);
-		return out.toString();		
+		return "<Symbol value='myValue' language='English'/>".replaceAll("'", "\"");
 	}
 
 	@Test
 	public void testSymbol() throws Exception {
 		Symbol symbol = createUnderTest("English", null);
-		assertEquals("English", symbol.getLanguage());
-		assertNull(symbol.getValue());
+		assertSymbol(symbol, null, "English");
 		
 		symbol = createUnderTest();
-		assertEquals("English", symbol.getLanguage());
-		assertEquals("myValue", symbol.getValue());
+		assertSymbol(symbol, "myValue", "English");
 	}
 	
 	@Test
 	public void testPersistSymbol_LanguageAndValueGiven_noError() throws Exception {
 		Symbol value = createUnderTest();
 		String xml = persist(value);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 
 	@Test
@@ -71,5 +58,11 @@ public class SymbolTest {
 		} catch (AttributeException ex) {
 			assertTrue(ex.getMessage().contains("language is null"));
 		}
+	}
+	
+	@Test
+	public void testConvertSymbolXML() throws Exception {
+		Symbol symbol = convertToModel(createExpectedXml());
+		assertSymbol(symbol, "myValue", "English");
 	}
 }

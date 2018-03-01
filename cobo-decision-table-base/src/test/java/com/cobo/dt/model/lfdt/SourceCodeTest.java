@@ -4,15 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class SourceCodeTest {
+public class SourceCodeTest extends AbstractLfdtTest<SourceCode> {
 	private SourceCode createUnderTest() {
-		return createUnderTest("Perl", "LogArg", "$step eq $$symbol");
+		return createUnderTest("Java", "LogArg", "value");
 	}
 	
 	private SourceCode createUnderTest(String codeLanguage, String codeType, String value) {
@@ -20,34 +17,25 @@ public class SourceCodeTest {
 	}
 
 	private String createExpectedXml() {
-		return "<SourceCode value='$step eq $$symbol' codeLanguage='Perl' sourceCodeType='LogArg'/>";
+		return "<SourceCode value='value' codeLanguage='Java' sourceCodeType='LogArg'/>".replaceAll("'", "\"");
 	}
 
-	private String persist(SourceCode sourceCode) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(sourceCode, out);
-		return out.toString();		
-	}
-	
 	@Test
 	public void testSourceCode() throws Exception {
 		SourceCode sourceCode = createUnderTest();
-		assertEquals("Perl", sourceCode.getCodeLanguage());
-		assertEquals("LogArg", sourceCode.getSourceCodeType());
-		assertEquals("$step eq $$symbol", sourceCode.getValue());
+		assertSourceCode(sourceCode, "Java", "LogArg", "value");
 	}
 
 	@Test
 	public void testPersistSourceCode_codeLanguageAndTypeAndValueGiven_noError() throws Exception {
 		SourceCode sourceCode = createUnderTest();
 		String xml = persist(sourceCode);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 	
 	@Test
 	public void testPersistSourceCode_codeLanguageNotGiven_Error() throws Exception {
-		SourceCode sourceCode = createUnderTest(null, "LogArg", "$step eq $$symbol");
+		SourceCode sourceCode = createUnderTest(null, "LogArg", "value");
 		
 		try {
 			persist(sourceCode);
@@ -59,7 +47,7 @@ public class SourceCodeTest {
 
 	@Test
 	public void testPersistSourceCode_sourceCodeTypeNotGiven_Error() throws Exception {
-		SourceCode sourceCode = createUnderTest("Perl", null, "$step eq $$symbol");
+		SourceCode sourceCode = createUnderTest("Java", null, "value");
 		
 		try {
 			persist(sourceCode);
@@ -71,7 +59,7 @@ public class SourceCodeTest {
 
 	@Test
 	public void testPersistSourceCode_valueNotGiven_Error() throws Exception {
-		SourceCode sourceCode = createUnderTest("Perl", "LogArg", null);
+		SourceCode sourceCode = createUnderTest("Java", "LogArg", null);
 		
 		try {
 			persist(sourceCode);
@@ -81,4 +69,9 @@ public class SourceCodeTest {
 		}	
 	}
 
+	@Test
+	public void testConvertSourceCodeXML() throws Exception {
+		SourceCode sourceCode = convertToModel(createExpectedXml());
+		assertSourceCode(sourceCode, "Java", "LogArg", "value");
+	}
 }

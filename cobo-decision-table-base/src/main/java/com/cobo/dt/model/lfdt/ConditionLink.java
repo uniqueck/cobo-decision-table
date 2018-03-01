@@ -19,6 +19,9 @@ public class ConditionLink {
 	private boolean conditionState;
 
 	public ConditionLink() {
+		this.link = null;
+		this.condition = null;
+		this.conditionState = false;
 	}
 
 	public Condition getCondition() {
@@ -28,13 +31,17 @@ public class ConditionLink {
 	protected void setCondition(Condition condition) {
 		this.condition = condition;
 	}
-	
+		
 	public boolean getConditionState() {
 		return conditionState;
 	}
 	
 	protected String getLink() {
 		return link;
+	}
+	
+	protected void setLink(String link) {
+		this.link = link;
 	}
 
 	@Validate

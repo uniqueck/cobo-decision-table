@@ -4,28 +4,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class AbstractValueTest {
+public class AbstractValueTest extends AbstractLfdtTest<AbstractValue> {
 	private AbstractValue createUnderTest(String value) {
 		return new AbstractValue(value) {};
 	}
 
 	private String createExpectedXml() {
-		return "< value='myValue'/>";
+		return "< value='myValue'/>".replaceAll("'", "\"");
 	}
 
-	private String persist(AbstractValue value) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(value, out);
-		return out.toString();		
-	}
-	
 	@Test
 	public void testValue() throws Exception {
 		AbstractValue value = createUnderTest("myValue");
@@ -36,7 +26,7 @@ public class AbstractValueTest {
 	public void testPersistValue_ValueGiven_noError() throws Exception {
 		AbstractValue value = createUnderTest("myValue");
 		String xml = persist(value);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 
 	@Test

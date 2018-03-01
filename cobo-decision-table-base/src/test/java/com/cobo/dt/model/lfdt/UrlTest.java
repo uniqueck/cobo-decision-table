@@ -1,17 +1,13 @@
 package com.cobo.dt.model.lfdt;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class UrlTest {
+public class UrlTest extends AbstractLfdtTest<Url> {
 	private Url createUnderTest() {
 		return createUnderTest("title", "file://path", true);
 	}
@@ -20,52 +16,35 @@ public class UrlTest {
 		return new Url(title, url, executable);
 	}
 	
-	private String persist(Url url) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(url, out);
-		return out.toString();		
-	}
-	
-	private Url convertToModel(String xml) throws Exception {
-		return new Persister().read(Url.class, xml);
-	}
-	
 	private String createExpectedXml() {
-		return "<url title='title' url='file://path' executable='true'/>";
+		return "<url title='title' url='file://path' executable='true'/>".replaceAll("'", "\"");
 	}
 
 	private String createExpectedXml2() {
-		return "<url title='title' url='file://path'/>";
+		return "<url title='title' url='file://path'/>".replaceAll("'", "\"");
 	}
 
 	private String createExpectedXml3() {
-		return "<url title='title' url='file://path' executable='false'/>";
+		return "<url title='title' url='file://path' executable='false'/>".replaceAll("'", "\"");
 	}
 
 	@Test
 	public void testUrl_threeParams() throws Exception {
 		Url url = createUnderTest("title", "http://url", true);
-		assertEquals("title", url.getTitle());
-		assertEquals("http://url", url.getUrl());
-		assertTrue(url.isExecutable());
+		assertUrl(url, "title", "http://url", true);
 		
 		url = createUnderTest("title", "http://url", false);
-		assertEquals("title", url.getTitle());
-		assertEquals("http://url", url.getUrl());
-		assertFalse(url.isExecutable());
-
+		assertUrl(url, "title", "http://url", false);
+		
 		url = createUnderTest("title", "http://url", null);
-		assertEquals("title", url.getTitle());
-		assertEquals("http://url", url.getUrl());
-		assertFalse(url.isExecutable());
+		assertUrl(url, "title", "http://url", false);
 	}
 	
 	@Test
 	public void testPersistUrl_TitleUrlAndExecutableGiven_noError() throws Exception {
 		Url url = createUnderTest();
 		String xml = persist(url);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 	
 	@Test
@@ -96,22 +75,28 @@ public class UrlTest {
 	public void testPersistUrl_ExecutableNotGiven_noErrorBecauseOptional() throws Exception {
 		Url url = createUnderTest("title", "file://path", null);
 		String xml = persist(url);
-		assertEquals(createExpectedXml2().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml2(), xml);
 	}
 	
 	@Test
 	public void testPersistUrl_ExecutableValueFalseGiven_noError() throws Exception {
 		Url url = createUnderTest("title", "file://path", false);
 		String xml = persist(url);
-		assertEquals(createExpectedXml3().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml3(), xml);
 	}
 	
 	@Test
-	public void testRead_urlTagWithTwoAttributes() throws Exception {
-		String xml = createExpectedXml2().replaceAll("'", "\"");
-		Url url = convertToModel(xml);
-		assertEquals("title", url.getTitle());
-		assertEquals("file://path", url.getUrl());
-		assertFalse(url.isExecutable());
+	public void testConvertUrlXML_urlTagWithTwoAttributes() throws Exception {
+		Url url = convertToModel(createExpectedXml2());
+		assertUrl(url, "title", "file://path", false);
+	}
+	
+	@Test
+	public void testConvertUrlXML_urlTagWithThreeAttributes() throws Exception {
+		Url url = convertToModel(createExpectedXml());
+		assertUrl(url, "title", "file://path", true);
+		
+		url = convertToModel(createExpectedXml3());
+		assertUrl(url, "title", "file://path", false);
 	}
 }

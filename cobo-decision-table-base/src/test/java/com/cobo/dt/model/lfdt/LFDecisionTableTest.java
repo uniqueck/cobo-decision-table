@@ -7,7 +7,6 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
 
-public class LFDecisionTableTest {
+public class LFDecisionTableTest extends AbstractLfdtTest<LFDecisionTable> {
 	private static String NEW_LINE = "\n";
 
 	private LFDecisionTable createUnderTest(String version, String language, String saveUser, String saveDate,
@@ -37,68 +36,6 @@ public class LFDecisionTableTest {
 			 + "</LFET>";
 	}
 
-	private String persist(LFDecisionTable dt) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(dt, out);
-		return out.toString();
-	}
-
-	private void assertSnapshot(Snapshot snapshot, String crDat, String rSeq, String scm, String cars, String focR, String focCA) {
-		assertEquals(crDat, snapshot.getCrDat());
-		assertEquals(rSeq, snapshot.getRSeq());
-		assertEquals(scm, snapshot.getScm());
-		assertEquals(cars, snapshot.getCars());
-		assertEquals(focR, snapshot.getFocR());
-		assertEquals(focCA, snapshot.getFocCA());
-	}
-
-	private void assertConditionLink(ConditionLink conditionLink, Condition expectedLinkedCondition, boolean expectedConditionState) {
-		assertSame(expectedLinkedCondition, conditionLink.getCondition());
-		assertEquals(expectedConditionState, conditionLink.getConditionState());
-	}
-
-	private void assertActionLink(ActionLink actionLink, Action expectedLinkedAction) {
-		assertSame(expectedLinkedAction, actionLink.getAction());
-	}
-
-	private void assertConditionOccurrenceLink(ConditionOccurrenceLink conditionOccurrenceLink, ConditionOccurrence expectedLinkedConditionOccurrence) {
-		assertSame(expectedLinkedConditionOccurrence, conditionOccurrenceLink.getConditionOccurrence());
-	}
-	
-	private void assertActionOccurrenceLink(ActionOccurrenceLink actionOccurrenceLink, ActionOccurrence expectedLinkedActionOccurrence) {
-		assertSame(expectedLinkedActionOccurrence, actionOccurrenceLink.getActionOccurrence());
-	}
-	
-	private void assertUrl(Url url, String expectedTitle, String expectedUrl, boolean expectedExecutable) {
-		assertEquals(expectedTitle, url.getTitle());
-		assertEquals(expectedUrl, url.getUrl());
-		assertEquals(expectedExecutable, url.isExecutable());
-	}
-	
-	private void assertSourceCode(SourceCode sourceCode, String expectedCodeLanguage, String expectedSourceCodeType, String expectedValue) {
-		assertEquals(expectedCodeLanguage, sourceCode.getCodeLanguage());
-		assertEquals(expectedSourceCodeType, sourceCode.getSourceCodeType());
-		assertEquals(expectedValue, sourceCode.getValue());
-	}
-
-	private void assertSymbol(Symbol symbol, String expectedSymbol, String expectedLanguage) {
-		assertEquals(expectedSymbol, symbol.getValue());
-		assertEquals(expectedLanguage, symbol.getLanguage());
-	}
-	
-	private void assertTitle(Title title, String expectedTitle, String expectedLanguage) {
-		assertEquals(expectedTitle, title.getValue());
-		assertEquals(expectedLanguage, title.getLanguage());
-	}
-	
-	private void assertText(Text text, String expectedDocuText, String expectedLanguage) {
-		assertEquals(expectedDocuText, text.getValue());
-		assertEquals(expectedLanguage, text.getLanguage());		
-	}
-
-	
-		
 	@Test
 	public void testLFDecisionTable() throws Exception {
 		Title title = new Title("English", "title");

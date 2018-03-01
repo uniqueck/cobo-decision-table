@@ -10,24 +10,30 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ActionLink {
-	@Attribute
+	@Attribute(name = "link")
 	private String link;
 	
 	private Action action;
 	
 	public ActionLink() {
+		this.link = null;
+		this.action = null;
 	}
 
 	public Action getAction() {
 		return action;
 	}
 	
-	public void setAction(Action action) {
+	protected void setAction(Action action) {
 		this.action = action;
 	}
 	
 	protected String getLink() {
 		return link;
+	}
+	
+	protected void setLink(String link) {
+		this.link = link;
 	}
 
 	@Validate

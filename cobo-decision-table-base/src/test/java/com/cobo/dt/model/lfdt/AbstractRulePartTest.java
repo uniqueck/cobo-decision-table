@@ -3,32 +3,30 @@ package com.cobo.dt.model.lfdt;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.simpleframework.xml.core.Persister;
 
-public class AbstractRulePartTest {
-	private static String NEW_LINE = "\n";
-	
+public class AbstractRulePartTest extends AbstractLfdtTest<AbstractRulePart<AbstractOccurrence>> {
 	private AbstractRulePart<AbstractOccurrence> createUnderTest(String uid, Title title, Text text, List<SourceCode> sourceCodes, List<AbstractOccurrence> occurences, List<Url> urls) {
 		return new AbstractRulePart<AbstractOccurrence>(uid, title, text, sourceCodes, occurences, urls) {};
 	}
 	
 	private String createExpectedXml_withoutOccurences() {
-		return "< uId='12345'>" + NEW_LINE
+		String xml = "< uId='12345'>" + NEW_LINE
 		     + "   <Title value='title' language='English'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem' codeLanguage='Perl' sourceCodeType='LogArg'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem = ();' codeLanguage='Perl' sourceCodeType='Prolog'/>" + NEW_LINE
 		     + "   <Text value='docuText' language='English'/>" + NEW_LINE
 		     + "   <UrlsOut/>" + NEW_LINE
 		     + "</>";
+		xml = xml.replaceAll("'", "\"");
+		return xml;
 	}
 
 	private String createExpectedXml_withOccurencesAndUrls() {
-		return "< uId='12345'>" + NEW_LINE
+		String xml = "< uId='12345'>" + NEW_LINE
 		     + "   <Title value='title' language='English'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem' codeLanguage='Perl' sourceCodeType='LogArg'/>" + NEW_LINE
 		     + "   <SourceCode value='$foundItem = ();' codeLanguage='Perl' sourceCodeType='Prolog'/>" + NEW_LINE
@@ -38,15 +36,9 @@ public class AbstractRulePartTest {
 		     + "      <Url title='title2' url='http://url2'/>" + NEW_LINE
 		     + "   </UrlsOut>" + NEW_LINE
 		     + "</>";
+		xml = xml.replaceAll("'", "\"");
+		return xml;
 	}
-	
-	private String persist(AbstractRulePart<AbstractOccurrence> rulePart) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(rulePart, out);
-		return out.toString();		
-	}
-
 	
 	@Test
 	public void testAbstractRulePart() throws Exception {
@@ -83,7 +75,7 @@ public class AbstractRulePartTest {
 			new Text("English", "docuText"), sourceCodes, null, null);
 		
 		String xml = persist(action);
-		assertEquals(createExpectedXml_withoutOccurences().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml_withoutOccurences(), xml);
 	}
 	
 	@Test
@@ -116,7 +108,7 @@ public class AbstractRulePartTest {
 			new Text("English", "docuText"), sourceCodes, occurrences, urls);
 		
 		String xml = persist(action);
-		assertEquals(createExpectedXml_withOccurencesAndUrls().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml_withOccurencesAndUrls(), xml);
 	}	
 
 }

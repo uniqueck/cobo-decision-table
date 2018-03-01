@@ -1,7 +1,9 @@
 package com.cobo.dt.model.lfdt;
 
 import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 
+@Root(name="Snapshot")
 public class Snapshot {
 	@Attribute(name = "crDat")
 	private String crDat;

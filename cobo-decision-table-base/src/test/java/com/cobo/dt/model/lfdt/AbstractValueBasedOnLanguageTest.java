@@ -5,13 +5,10 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class AbstractValueBasedOnLanguageTest {
+public class AbstractValueBasedOnLanguageTest extends AbstractLfdtTest<AbstractValueBasedOnLanguage> {
 	private AbstractValueBasedOnLanguage createUnderTest() {
 		return createUnderTest("English", "myValue");
 	}
@@ -21,14 +18,7 @@ public class AbstractValueBasedOnLanguageTest {
 	}
 
 	private String createExpectedXml() {
-		return "< value='myValue' language='English'/>";
-	}
-
-	private String persist(AbstractValueBasedOnLanguage value) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(value, out);
-		return out.toString();		
+		return "< value='myValue' language='English'/>".replaceAll("'", "\"");
 	}
 
 	@Test
@@ -46,7 +36,7 @@ public class AbstractValueBasedOnLanguageTest {
 	public void testPersistAbstractValueBasedOnLanguage_LanguageAndValueGiven_noError() throws Exception {
 		AbstractValueBasedOnLanguage value = createUnderTest();
 		String xml = persist(value);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 
 	@Test

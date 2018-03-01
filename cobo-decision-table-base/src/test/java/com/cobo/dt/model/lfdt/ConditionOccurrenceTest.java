@@ -3,41 +3,32 @@ package com.cobo.dt.model.lfdt;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.simpleframework.xml.core.Persister;
 
-public class ConditionOccurrenceTest {
-	private static String NEW_LINE = "\n";
-	
+public class ConditionOccurrenceTest extends AbstractLfdtTest<ConditionOccurrence> {
 	private ConditionOccurrence createUnderTest(String uid, Symbol symbol, Title title, Text text, List<SourceCode> sourceCodes, List<Url> urls) {
 		return new ConditionOccurrence(uid, symbol, title, text, sourceCodes, urls);
 	}
 
 	private String createExpectedXml() {
-		return "<conditionOccurrence uId='12345'>" + NEW_LINE
+		String xml = "<conditionOccurrence uId='12345'>" + NEW_LINE
 			 + "   <Symbol value='symbol' language='English'/>" + NEW_LINE
 			 + "   <Title value='title' language='English'/>" + NEW_LINE
 			 + "   <Text value='docuText' language='English'/>" + NEW_LINE
-		     + "   <SourceCode value='$foundItem' codeLanguage='Perl' sourceCodeType='LogArg'/>" + NEW_LINE
-		     + "   <SourceCode value='$foundItem = ();' codeLanguage='Perl' sourceCodeType='Prolog'/>" + NEW_LINE
+		     + "   <SourceCode value='value1' codeLanguage='Java' sourceCodeType='LogArg'/>" + NEW_LINE
+		     + "   <SourceCode value='value2' codeLanguage='Java' sourceCodeType='Prolog'/>" + NEW_LINE
 		     + "   <UrlsOut>" + NEW_LINE
 		     + "      <Url title='title1' url='http://url1'/>" + NEW_LINE
 		     + "      <Url title='title2' url='http://url2'/>" + NEW_LINE
 		     + "   </UrlsOut>" + NEW_LINE
 		     + "</conditionOccurrence>";
+		xml = xml.replaceAll("'", "\"");
+		return xml;
 	}
 	
-	private String persist(ConditionOccurrence occurrence) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(occurrence, out);
-		return out.toString();		
-	}
-
 	@Test
 	public void testActionOccurrence() throws Exception {
 		String uid = "12345";
@@ -46,9 +37,9 @@ public class ConditionOccurrenceTest {
 		Text text = new Text("English", "docuText");
 		
 		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
-		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
+		SourceCode sourceCode1 = new SourceCode("Java", "LogArg", "value1");
 		sourceCodes.add(sourceCode1);
-		SourceCode sourceCode2 = new SourceCode("Perl", "LogArg2", "$foundItem2");
+		SourceCode sourceCode2 = new SourceCode("Java", "LogArg2", "value2");
 		sourceCodes.add(sourceCode2);
 		
 		List<Url> urls = new ArrayList<Url>();
@@ -66,8 +57,8 @@ public class ConditionOccurrenceTest {
 
 	@Test
 	public void testPersistModel() throws Exception {
-		SourceCode sourceCode1 = new SourceCode("Perl", "LogArg", "$foundItem");
-		SourceCode sourceCode2 = new SourceCode("Perl", "Prolog", "$foundItem = ();");
+		SourceCode sourceCode1 = new SourceCode("Java", "LogArg", "value1");
+		SourceCode sourceCode2 = new SourceCode("Java", "Prolog", "value2");
 		List<SourceCode> sourceCodes = new ArrayList<SourceCode>();
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
@@ -79,6 +70,22 @@ public class ConditionOccurrenceTest {
 				new Text("English", "docuText"), sourceCodes, urls);
 		
 		String xml = persist(occurrence);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
+	}
+	
+	@Test
+	public void testConvertConditionOccurrenceXML_withoutOccurencesAndUrls() throws Exception {
+		ConditionOccurrence conditionOccurrence = convertToModel(createExpectedXml());
+		
+		assertEquals("12345", conditionOccurrence.getUId());
+		assertSymbol(conditionOccurrence.getSymbol(), "symbol", "English");
+		assertTitle(conditionOccurrence.getTitle(), "title", "English");
+		assertText(conditionOccurrence.getText(), "docuText", "English");
+		assertEquals(2, conditionOccurrence.getSourceCodes().size());
+		assertSourceCode(conditionOccurrence.getSourceCodes().get(0), "Java", "LogArg", "value1");
+		assertSourceCode(conditionOccurrence.getSourceCodes().get(1), "Java", "Prolog", "value2");
+		assertEquals(2, conditionOccurrence.getUrls().size());
+		assertUrl(conditionOccurrence.getUrls().get(0), "title1", "http://url1", false);
+		assertUrl(conditionOccurrence.getUrls().get(1), "title2", "http://url2", false);
 	}
 }

@@ -1,17 +1,13 @@
 package com.cobo.dt.model.lfdt;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.StringWriter;
-
 import org.junit.Test;
 import org.simpleframework.xml.core.AttributeException;
-import org.simpleframework.xml.core.Persister;
 
-public class TextTest {
+public class TextTest extends AbstractLfdtTest<Text> {
 	private Text createUnderTest() {
 		return createUnderTest("English", "this is a docu");
 	}
@@ -21,32 +17,23 @@ public class TextTest {
 	}
 
 	private String createExpectedXml() {
-		return "<Text value='this is a docu' language='English'/>";
-	}
-
-	private String persist(Text text) throws Exception {
-		Persister xmlPersister = new Persister();
-		StringWriter out = new StringWriter();
-		xmlPersister.write(text, out);
-		return out.toString();		
+		return "<Text value='this is a docu' language='English'/>".replaceAll("'", "\"");
 	}
 
 	@Test
 	public void testText() throws Exception {
 		Text text = createUnderTest("English", null);
-		assertEquals("English", text.getLanguage());
-		assertNull(text.getValue());
+		assertText(text, null, "English");
 		
 		text = createUnderTest();
-		assertEquals("English", text.getLanguage());
-		assertEquals("this is a docu", text.getValue());
+		assertText(text, "this is a docu", "English");
 	}
 	
 	@Test
 	public void testPersistText_LanguageAndValueGiven_noError() throws Exception {
 		Text text = createUnderTest();
 		String xml = persist(text);
-		assertEquals(createExpectedXml().replaceAll("'", "\""), xml);
+		assertEquals(createExpectedXml(), xml);
 	}
 
 	@Test
@@ -71,5 +58,11 @@ public class TextTest {
 		} catch (AttributeException ex) {
 			assertTrue(ex.getMessage().contains("language is null"));
 		}
+	}
+	
+	@Test
+	public void testConvertTextXML() throws Exception {
+		Text text = convertToModel(createExpectedXml());
+		assertText(text, "this is a docu", "English");
 	}
 }

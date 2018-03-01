@@ -10,24 +10,30 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ConditionOccurrenceLink {
-	@Attribute
+	@Attribute(name = "link")
 	private String link;
 
 	private ConditionOccurrence conditionOccurrence;
 
 	public ConditionOccurrenceLink() {
+		this.link = null;
+		this.conditionOccurrence = null;
 	}
 
 	public ConditionOccurrence getConditionOccurrence() {
 		return conditionOccurrence;
 	}
 	
-	public void setConditionOccurrence(ConditionOccurrence conditionOccurence) {
-		this.conditionOccurrence = conditionOccurence;
+	public void setConditionOccurrence(ConditionOccurrence conditionOccurrence) {
+		this.conditionOccurrence = conditionOccurrence;
 	}
 	
 	protected String getLink() {
 		return link;
+	}
+	
+	protected void setLink(String link) {
+		this.link = link;
 	}
 
 	@Validate
