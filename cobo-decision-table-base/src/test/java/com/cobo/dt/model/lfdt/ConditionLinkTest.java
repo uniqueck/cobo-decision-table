@@ -18,7 +18,7 @@ public class ConditionLinkTest extends AbstractLfdtTest<ConditionLink> {
 	@Test
 	public void testConditionLink() throws Exception {
 		ConditionLink conditionLink = createUnderTest();
-		assertNull(conditionLink.getCondition());
+		assertNull(conditionLink.getLinkedModel());
 		assertNull(conditionLink.getLink());
 		assertFalse(conditionLink.getConditionState());
 	}
@@ -28,7 +28,7 @@ public class ConditionLinkTest extends AbstractLfdtTest<ConditionLink> {
 		Condition condition = new Condition("condId", new Title("English", "title"), new Text("English", "text"), null, null, null);
 
 		ConditionLink conditionLink = createUnderTest();
-		conditionLink.setCondition(condition);
+		conditionLink.setLinkedModel(condition);
 		conditionLink.setLink(condition.getUId());
 		
 		String xml = persist(conditionLink);

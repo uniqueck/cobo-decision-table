@@ -60,25 +60,25 @@ public class RuleTest extends AbstractLfdtTest<Rule>{
 
 		List<ConditionLink> conditionLinks = new ArrayList<ConditionLink>();
 		ConditionLink conditionLink = new ConditionLink();
-		conditionLink.setCondition(condition);
+		conditionLink.setLinkedModel(condition);
 		conditionLink.setLink(condition.getUId());
 		conditionLinks.add(conditionLink);
 		
 		List<ActionLink> actionLinks = new ArrayList<ActionLink>();
 		ActionLink actionLink = new ActionLink();
-		actionLink.setAction(action);
+		actionLink.setLinkedModel(action);
 		actionLink.setLink(action.getUId());
 		actionLinks.add(actionLink);
 		
 		List<ConditionOccurrenceLink> conditionOccurrenceLinks = new ArrayList<ConditionOccurrenceLink>();
 		ConditionOccurrenceLink conditionOccurrenceLink = new ConditionOccurrenceLink();
-		conditionOccurrenceLink.setConditionOccurrence(conditionOccurrence);
+		conditionOccurrenceLink.setLinkedModel(conditionOccurrence);
 		conditionOccurrenceLink.setLink(conditionOccurrence.getUId());
 		conditionOccurrenceLinks.add(conditionOccurrenceLink);
 		
 		List<ActionOccurrenceLink> actionOccurrenceLinks = new ArrayList<ActionOccurrenceLink>();
 		ActionOccurrenceLink actionOccurrenceLink = new ActionOccurrenceLink();
-		actionOccurrenceLink.setActionOccurrence(actionOccurrence);
+		actionOccurrenceLink.setLinkedModel(actionOccurrence);
 		actionOccurrenceLink.setLink(actionOccurrence.getUId());
 		actionOccurrenceLinks.add(actionOccurrenceLink);
 		

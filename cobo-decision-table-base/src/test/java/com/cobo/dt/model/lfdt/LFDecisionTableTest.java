@@ -10,13 +10,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.simpleframework.xml.core.Persister;
 
 public class LFDecisionTableTest extends AbstractLfdtTest<LFDecisionTable> {
-	private static String NEW_LINE = "\n";
-
 	private LFDecisionTable createUnderTest(String version, String language, String saveUser, String saveDate,
 			Title title, Text text, List<SourceCode> sourceCodes, List<Condition> conditions, List<Action> actions,
 			List<Rule> rules, List<Url> urls, String lastId, List<Snapshot> snapshots) {
@@ -84,10 +81,9 @@ public class LFDecisionTableTest extends AbstractLfdtTest<LFDecisionTable> {
 	}
 
 	@Test
-	@Ignore
-	// FIXME BG 01.03.2018: fix Test: Use assertion methods of this test
 	public void testLFDT_AbfallGetEvents() throws Exception {
 		LFDecisionTable lfet = new Persister().read(LFDecisionTable.class, new File("src/test/resources/ABFALL_getEvents.lfet"));
+		
 		assertNotNull(lfet);
 		assertEquals("LF-ET 2.1.5 (170306b)", lfet.getVersion());
 		assertEquals("2017.09.08 at 13:21:39 CEST", lfet.getSaveDate());
@@ -100,184 +96,129 @@ public class LFDecisionTableTest extends AbstractLfdtTest<LFDecisionTable> {
 		assertNotNull(lfet.getRules());
 		assertEquals(19, lfet.getRules().size());
 
-		assertConditions(lfet.getConditions());
+		List<Condition> conditions = lfet.getConditions();
+		
+		assertNotNull(conditions);
+		assertEquals(12, conditions.size());
+
+		Condition condition = conditions.get(0);
+		assertEquals("1504126444840415", condition.getUId());
+		assertTitle(condition.getTitle(), "step", "German");
+		List<ConditionOccurrence> occurences = condition.getOccurrences();
+		assertEquals(5, occurences.size());
+		AbstractOccurrence occ = occurences.get(0);
+		assertEquals("1504126505502473", occ.getUId());
+		assertSymbol(occ.getSymbol(), "1", "German");
+		assertTitle(occ.getTitle(), "calendar step", "German");
+		occ = occurences.get(1);
+		assertEquals("1504126505502475", occ.getUId());
+		assertSymbol(occ.getSymbol(), "2", "German");
+		assertTitle(occ.getTitle(), "event step", "German");
+		occ = occurences.get(2);
+		assertEquals("15042103579651680", occ.getUId());
+		assertSymbol(occ.getSymbol(), "3", "German");
+		assertTitle(occ.getTitle(), "start time step", "German");
+		occ = occurences.get(3);
+		assertEquals("15042131247763480", occ.getUId());
+		assertSymbol(occ.getSymbol(), "4", "German");
+		assertTitle(occ.getTitle(), "check start time step", "German");
+		occ = occurences.get(4);
+		assertEquals("15042156349605690", occ.getUId());
+		assertSymbol(occ.getSymbol(), "5", "German");
+		assertTitle(occ.getTitle(), "search for duplicate step", "German");
+
+		condition = conditions.get(1);
+		assertEquals("11446800829457960", condition.getUId());
+		assertTitle(condition.getTitle(), "has more calendars", "German");
+
+		condition = conditions.get(2);
+		assertEquals("15041328493073228", condition.getUId());
+		assertTitle(condition.getTitle(), "has more events", "German");
 	}
 
 	@Test
-	// FIXME BG 01.03.2018: fix Test: Use assertion methods of this test
 	public void testLFDT_StateMachine_1_Eng() throws Exception {
 		LFDecisionTable lfet = new Persister().read(LFDecisionTable.class, new File("src/test/resources/StateMachine_1_Eng.lfet"));
 		
 		assertNotNull(lfet);
-		
 		assertEquals("LF-ET 2.1.5 (171120a)", lfet.getVersion());
 		assertEquals("2018.02.19 at 00:16:45 CET", lfet.getSaveDate());
 		assertEquals("English", lfet.getLanguage());
 		assertEquals("constantin", lfet.getSaveUser());
-		assertEquals("A Statemachine, only for testing purpose", lfet.getTitle().getValue());
-		assertEquals("English", lfet.getTitle().getLanguage());
-		assertEquals("a long documentation", lfet.getText().getValue());
-		assertEquals("English", lfet.getText().getLanguage());
+		assertTitle(lfet.getTitle(), "A Statemachine, only for testing purpose", "English");
+		assertText(lfet.getText(), "a long documentation", "English");
 
-		assertNotNull(lfet.getConditions());
 		assertEquals(2, lfet.getConditions().size());
+
 		Condition condition = lfet.getConditions().get(0);
-		assertNotNull(condition);
-		assertEquals("State", condition.getTitle().getValue());
-		assertEquals("documentation for C01", condition.getText().getValue());
+		assertTitle(condition.getTitle(), "State", "English");
+		assertText(condition.getText(), "documentation for C01", "English");
 		List<ConditionOccurrence> conditionOccurences = condition.getOccurrences();
-		assertNotNull(conditionOccurences);
 		assertEquals(2, conditionOccurences.size());
-		assertEquals("INIT", conditionOccurences.get(0).getSymbol().getValue());
-		assertEquals("Init State", conditionOccurences.get(0).getTitle().getValue());
-		assertEquals("CHECK", conditionOccurences.get(1).getSymbol().getValue());
-		assertEquals("Check State", conditionOccurences.get(1).getTitle().getValue());
+		assertSymbol(conditionOccurences.get(0).getSymbol(), "INIT", "English");
+		assertTitle(conditionOccurences.get(0).getTitle(), "Init State", "English");
+		assertSymbol(conditionOccurences.get(1).getSymbol(), "CHECK", "English");
+		assertTitle(conditionOccurences.get(1).getTitle(), "Check State", "English");
 
 		condition = lfet.getConditions().get(1);
-		assertNotNull(condition);
-		assertEquals("Useless Condition", condition.getTitle().getValue());
-		assertEquals("documentation for C02", condition.getText().getValue());
-		conditionOccurences = condition.getOccurrences();
-		assertNull(conditionOccurences);
+		assertTitle(condition.getTitle(), "Useless Condition", "English");
+		assertText(condition.getText(), "documentation for C02", "English");
+		assertNull(condition.getOccurrences());
 
-		assertNotNull(lfet.getActions());
 		assertEquals(2, lfet.getActions().size());
-		List<Action> actions = lfet.getActions();
-		assertNotNull(actions.get(0));
-		assertEquals("Useless Action", actions.get(0).getTitle().getValue());
-		assertEquals("documentation for A01", actions.get(0).getText().getValue());
-		assertNull(actions.get(0).getOccurrences());
-		assertNotNull(actions.get(1));
-		assertEquals("State", actions.get(1).getTitle().getValue());
-		assertEquals("documentation for A02", actions.get(1).getText().getValue());
-		List<ActionOccurrence> occurences = actions.get(1).getOccurrences();
-		assertNotNull(occurences);
-		assertEquals("EXIT", occurences.get(0).getSymbol().getValue());
-		assertEquals("Exit State", occurences.get(0).getTitle().getValue());
-		assertEquals("CHECK", occurences.get(1).getSymbol().getValue());
-		assertEquals("Check State", occurences.get(1).getTitle().getValue());
+		
+		Action action = lfet.getActions().get(0);
+		assertTitle(action.getTitle(), "Useless Action", "English");
+		assertText(action.getText(), "documentation for A01", "English");
+		assertNull(action.getOccurrences());
+		
+		action = lfet.getActions().get(1);
+		assertTitle(action.getTitle(), "State", "English");
+		assertText(action.getText(), "documentation for A02", "English");
+		List<ActionOccurrence> actionOccurrences = action.getOccurrences();
+		assertEquals(2, actionOccurrences.size());
+		assertSymbol(actionOccurrences.get(0).getSymbol(), "EXIT", "English");
+		assertTitle(actionOccurrences.get(0).getTitle(), "Exit State", "English");
+		assertSymbol(actionOccurrences.get(1).getSymbol(), "CHECK", "English");
+		assertTitle(actionOccurrences.get(1).getTitle(), "Check State", "English");
 
-		List<Rule> rules = lfet.getRules();
-		assertNotNull(rules);
-		assertEquals(4, rules.size());
-		Rule rule = rules.get(0);
+		assertEquals(4, lfet.getRules().size());
+		
+		Rule rule = lfet.getRules().get(0);
 		assertNotNull(rule);
 		assertNotNull(rule.getConditionLinks());
 		assertEquals(1, rule.getConditionLinks().size());
 		ConditionLink conditionLink = rule.getConditionLinks().get(0);
 		assertNotNull(conditionLink);
-		assertNotNull(conditionLink.getCondition());
-		assertSame(lfet.getConditions().get(1), conditionLink.getCondition());
+		assertNotNull(conditionLink.getLinkedModel());
+		assertSame(lfet.getConditions().get(1), conditionLink.getLinkedModel());
 		assertTrue(conditionLink.getConditionState());
 		
 		assertNotNull(rule.getConditionOccurrenceLinks());
 		assertEquals(1, rule.getConditionOccurrenceLinks().size());
 		ConditionOccurrenceLink conditionOccurenceLink = rule.getConditionOccurrenceLinks().get(0);
 		assertNotNull(conditionOccurenceLink);
-		assertNotNull(conditionOccurenceLink.getConditionOccurrence());
-		assertSame(lfet.getConditions().get(0).getOccurrences().get(0), conditionOccurenceLink.getConditionOccurrence());
+		assertNotNull(conditionOccurenceLink.getLinkedModel());
+		assertSame(lfet.getConditions().get(0).getOccurrences().get(0), conditionOccurenceLink.getLinkedModel());
 		
-//		assertNotNull(rule.getActionLinks());
+		assertNull(rule.getActionLinks());
 		
 		assertNotNull(rule.getActionOccurrenceLinks());
 		assertEquals(1, rule.getActionOccurrenceLinks().size());
 		ActionOccurrenceLink actionOccurrenceLink = rule.getActionOccurrenceLinks().get(0);
 		assertNotNull(actionOccurrenceLink);
-		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertSame(lfet.getActions().get(1).getOccurrences().get(1), actionOccurrenceLink.getActionOccurrence());
+		assertNotNull(actionOccurrenceLink.getLinkedModel());
+		assertSame(lfet.getActions().get(1).getOccurrences().get(1), actionOccurrenceLink.getLinkedModel());
 		
-		rule =  rules.get(2);
+		rule = lfet.getRules().get(2);
 		assertNotNull(rule);
 		assertNotNull(rule.getActionLinks());
 		assertEquals(1, rule.getActionLinks().size());
 		ActionLink actionLink = rule.getActionLinks().get(0);
 		assertNotNull(actionLink);
-		assertNotNull(actionLink.getAction());
-		assertSame(lfet.getActions().get(0), actionLink.getAction());
-		
-
+		assertNotNull(actionLink.getLinkedModel());
+		assertSame(lfet.getActions().get(0), actionLink.getLinkedModel());
 	}
-
-	private void assertConditions(List<Condition> conditions) {
-		assertNotNull(conditions);
-		assertEquals(12, conditions.size());
-
-		Condition condition = conditions.get(0);
-		assertNotNull(condition);
-		assertNotNull(condition.getUId());
-		assertEquals("1504126444840415", condition.getUId());
-
-		assertValueBasedOnLanguage(condition.getTitle(), "step");
-
-		List<ConditionOccurrence> occurences = condition.getOccurrences();
-		assertNotNull(occurences);
-		assertEquals(5, occurences.size());
-
-		AbstractOccurrence occ = occurences.get(0);
-		assertNotNull(occ);
-		assertEquals("1504126505502473", occ.getUId());
-		assertValueBasedOnLanguage(occ.getSymbol(), "1");
-		assertValueBasedOnLanguage(occ.getTitle(), "calendar step");
-
-		occ = occurences.get(1);
-		assertNotNull(occ);
-		assertEquals("1504126505502475", occ.getUId());
-		assertValueBasedOnLanguage(occ.getSymbol(), "2");
-		assertValueBasedOnLanguage(occ.getTitle(), "event step");
-
-		occ = occurences.get(2);
-		assertNotNull(occ);
-		assertEquals("15042103579651680", occ.getUId());
-		assertValueBasedOnLanguage(occ.getSymbol(), "3");
-		assertValueBasedOnLanguage(occ.getTitle(), "start time step");
-
-		occ = occurences.get(3);
-		assertNotNull(occ);
-		assertEquals("15042131247763480", occ.getUId());
-		assertValueBasedOnLanguage(occ.getSymbol(), "4");
-		assertValueBasedOnLanguage(occ.getTitle(), "check start time step");
-
-		occ = occurences.get(4);
-		assertNotNull(occ);
-		assertEquals("15042156349605690", occ.getUId());
-		assertValueBasedOnLanguage(occ.getSymbol(), "5");
-		assertValueBasedOnLanguage(occ.getTitle(), "search for duplicate step");
-
-		/**
-		 * <Condition uId="11446800829457960">
-		 * <Title language="German" value="has more calendars"/>
-		 * <SourceCode codeLanguage="Perl" sourceCodeType="LogArg" value="$calIndex &lt;
-		 * scalar(@calendernamen)"/> </Condition>
-		 */
-		condition = conditions.get(1);
-		assertNotNull(condition);
-		assertNotNull(condition.getUId());
-		assertEquals("11446800829457960", condition.getUId());
-
-		assertValueBasedOnLanguage(condition.getTitle(), "has more calendars");
-
-		/**
-		 * <Condition uId="15041328493073228">
-		 * <Title language="German" value="has more events"/>
-		 * <SourceCode codeLanguage="Perl" sourceCodeType="LogArg" value="$eventIndex
-		 * &lt; scalar(@termine)"/> </Condition>
-		 */
-		condition = conditions.get(2);
-		assertNotNull(condition);
-		assertNotNull(condition.getUId());
-		assertEquals("15041328493073228", condition.getUId());
-
-		assertValueBasedOnLanguage(condition.getTitle(), "has more events");
-
-	}
-
-	private void assertValueBasedOnLanguage(AbstractValueBasedOnLanguage actualTitle, String expectedValue) {
-		assertNotNull(actualTitle);
-		assertEquals("German", actualTitle.getLanguage());
-		assertEquals(expectedValue, actualTitle.getValue());
-
-	}
-	
 	
 	@Test
 	public void testLFDT_DTWhichContainsAllPossibleFeatures() throws Exception {

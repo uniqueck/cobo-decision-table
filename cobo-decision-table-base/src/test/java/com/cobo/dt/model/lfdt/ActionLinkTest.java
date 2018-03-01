@@ -17,7 +17,7 @@ public class ActionLinkTest extends AbstractLfdtTest<ActionLink> {
 	@Test
 	public void testActionLink() throws Exception {
 		ActionLink actionLink = createUnderTest();
-		assertNull(actionLink.getAction());
+		assertNull(actionLink.getLinkedModel());
 		assertNull(actionLink.getLink());
 	}
 
@@ -26,7 +26,7 @@ public class ActionLinkTest extends AbstractLfdtTest<ActionLink> {
 		Action action = new Action("actionId", new Title("English", "title"), new Text("English", "text"), null, null, null);
 
 		ActionLink actionLink = createUnderTest();
-		actionLink.setAction(action);
+		actionLink.setLinkedModel(action);
 		actionLink.setLink(action.getUId());
 		
 		String xml = persist(actionLink);

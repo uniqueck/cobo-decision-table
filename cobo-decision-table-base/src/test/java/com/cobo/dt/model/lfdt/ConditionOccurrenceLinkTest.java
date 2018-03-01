@@ -17,7 +17,7 @@ public class ConditionOccurrenceLinkTest extends AbstractLfdtTest<ConditionOccur
 	@Test
 	public void testConditionOccurrenceLink() throws Exception {
 		ConditionOccurrenceLink conditionOccurrenceLink = createUnderTest();
-		assertNull(conditionOccurrenceLink.getConditionOccurrence());
+		assertNull(conditionOccurrenceLink.getLinkedModel());
 		assertNull(conditionOccurrenceLink.getLink());
 	}
 
@@ -26,7 +26,7 @@ public class ConditionOccurrenceLinkTest extends AbstractLfdtTest<ConditionOccur
 		ConditionOccurrence conditionOccurrence = new ConditionOccurrence("condOccId", new Symbol("English", "symbol"), new Title("English", "title"), new Text("English", "text"), null, null);
 
 		ConditionOccurrenceLink conditionOccurrenceLink = createUnderTest();
-		conditionOccurrenceLink.setConditionOccurrence(conditionOccurrence);
+		conditionOccurrenceLink.setLinkedModel(conditionOccurrence);
 		conditionOccurrenceLink.setLink(conditionOccurrence.getUId());
 		
 		String xml = persist(conditionOccurrenceLink);

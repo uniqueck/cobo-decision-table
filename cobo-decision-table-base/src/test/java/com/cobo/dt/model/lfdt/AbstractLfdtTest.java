@@ -41,20 +41,24 @@ public class AbstractLfdtTest<MODELCLASS_UNDER_TEST> {
 	}
 
 	protected void assertConditionLink(ConditionLink conditionLink, Condition expectedLinkedCondition, boolean expectedConditionState) {
-		assertSame(expectedLinkedCondition, conditionLink.getCondition());
+		assertSame(expectedLinkedCondition, conditionLink.getLinkedModel());
+		assertEquals(conditionLink.getLinkedModel().getUId(), conditionLink.getLink());
 		assertEquals(expectedConditionState, conditionLink.getConditionState());
 	}
 
 	protected void assertActionLink(ActionLink actionLink, Action expectedLinkedAction) {
-		assertSame(expectedLinkedAction, actionLink.getAction());
+		assertSame(expectedLinkedAction, actionLink.getLinkedModel());
+		assertEquals(actionLink.getLinkedModel().getUId(), actionLink.getLink());
 	}
 
 	protected void assertConditionOccurrenceLink(ConditionOccurrenceLink conditionOccurrenceLink, ConditionOccurrence expectedLinkedConditionOccurrence) {
-		assertSame(expectedLinkedConditionOccurrence, conditionOccurrenceLink.getConditionOccurrence());
+		assertSame(expectedLinkedConditionOccurrence, conditionOccurrenceLink.getLinkedModel());
+		assertEquals(conditionOccurrenceLink.getLinkedModel().getUId(), conditionOccurrenceLink.getLink());
 	}
 	
 	protected void assertActionOccurrenceLink(ActionOccurrenceLink actionOccurrenceLink, ActionOccurrence expectedLinkedActionOccurrence) {
-		assertSame(expectedLinkedActionOccurrence, actionOccurrenceLink.getActionOccurrence());
+		assertSame(expectedLinkedActionOccurrence, actionOccurrenceLink.getLinkedModel());
+		assertEquals(actionOccurrenceLink.getLinkedModel().getUId(), actionOccurrenceLink.getLink());
 	}
 	
 	protected void assertUrl(Url url, String expectedTitle, String expectedUrl, boolean expectedExecutable) {

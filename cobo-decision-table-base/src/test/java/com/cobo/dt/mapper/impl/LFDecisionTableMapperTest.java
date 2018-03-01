@@ -243,8 +243,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(conditionOccurrenceLinks);
 		assertEquals(1, conditionOccurrenceLinks.size());
 		ConditionOccurrenceLink conditionOccurrenceLink = conditionOccurrenceLinks.get(0);
-		assertNotNull(conditionOccurrenceLink.getConditionOccurrence());
-		assertEquals("INIT", conditionOccurrenceLink.getConditionOccurrence().getSymbol().getValue());
+		assertNotNull(conditionOccurrenceLink.getLinkedModel());
+		assertEquals("INIT", conditionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ConditionLink> conditionLinks = rule.getConditionLinks();
 		assertNotNull(conditionLinks);
@@ -256,8 +256,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(actionOccurrenceLinks);
 		assertEquals(1, actionOccurrenceLinks.size());
 		ActionOccurrenceLink actionOccurrenceLink = actionOccurrenceLinks.get(0);
-		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertEquals("CHECK", actionOccurrenceLink.getActionOccurrence().getSymbol().getValue());
+		assertNotNull(actionOccurrenceLink.getLinkedModel());
+		assertEquals("CHECK", actionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ActionLink> actionLinks = rule.getActionLinks();
 		assertNull(actionLinks);
@@ -269,8 +269,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(conditionOccurrenceLinks);
 		assertEquals(1, conditionOccurrenceLinks.size());
 		ConditionOccurrenceLink conditionOccurrenceLink = conditionOccurrenceLinks.get(0);
-		assertNotNull(conditionOccurrenceLink.getConditionOccurrence());
-		assertEquals("INIT", conditionOccurrenceLink.getConditionOccurrence().getSymbol().getValue());
+		assertNotNull(conditionOccurrenceLink.getLinkedModel());
+		assertEquals("INIT", conditionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ConditionLink> conditionLinks = rule.getConditionLinks();
 		assertNotNull(conditionLinks);
@@ -282,8 +282,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(actionOccurrenceLinks);
 		assertEquals(1, actionOccurrenceLinks.size());
 		ActionOccurrenceLink actionOccurrenceLink = actionOccurrenceLinks.get(0);
-		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertEquals("CHECK", actionOccurrenceLink.getActionOccurrence().getSymbol().getValue());
+		assertNotNull(actionOccurrenceLink.getLinkedModel());
+		assertEquals("CHECK", actionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ActionLink> actionLinks = rule.getActionLinks();
 		assertNull(actionLinks);
@@ -295,8 +295,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(conditionOccurrenceLinks);
 		assertEquals(1, conditionOccurrenceLinks.size());
 		ConditionOccurrenceLink conditionOccurrenceLink = conditionOccurrenceLinks.get(0);
-		assertNotNull(conditionOccurrenceLink.getConditionOccurrence());
-		assertEquals("CHECK", conditionOccurrenceLink.getConditionOccurrence().getSymbol().getValue());
+		assertNotNull(conditionOccurrenceLink.getLinkedModel());
+		assertEquals("CHECK", conditionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ConditionLink> conditionLinks = rule.getConditionLinks();
 		assertNotNull(conditionLinks);
@@ -308,15 +308,15 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(actionOccurrenceLinks);
 		assertEquals(1, actionOccurrenceLinks.size());
 		ActionOccurrenceLink actionOccurrenceLink = actionOccurrenceLinks.get(0);
-		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertEquals("EXIT", actionOccurrenceLink.getActionOccurrence().getSymbol().getValue());
+		assertNotNull(actionOccurrenceLink.getLinkedModel());
+		assertEquals("EXIT", actionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ActionLink> actionLinks = rule.getActionLinks();
 		assertNotNull(actionLinks);
 		assertEquals(1, actionLinks.size());
 		ActionLink actionLink = actionLinks.get(0);
 		assertNotNull(actionLink);
-		assertNotNull(actionLink.getAction());
+		assertNotNull(actionLink.getLinkedModel());
 
 	}
 
@@ -326,8 +326,8 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(conditionOccurrenceLinks);
 		assertEquals(1, conditionOccurrenceLinks.size());
 		ConditionOccurrenceLink conditionOccurrenceLink = conditionOccurrenceLinks.get(0);
-		assertNotNull(conditionOccurrenceLink.getConditionOccurrence());
-		assertEquals("CHECK", conditionOccurrenceLink.getConditionOccurrence().getSymbol().getValue());
+		assertNotNull(conditionOccurrenceLink.getLinkedModel());
+		assertEquals("CHECK", conditionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ConditionLink> conditionLinks = rule.getConditionLinks();
 		assertNotNull(conditionLinks);
@@ -339,15 +339,14 @@ public class LFDecisionTableMapperTest {
 		assertNotNull(actionOccurrenceLinks);
 		assertEquals(1, actionOccurrenceLinks.size());
 		ActionOccurrenceLink actionOccurrenceLink = actionOccurrenceLinks.get(0);
-		assertNotNull(actionOccurrenceLink.getActionOccurrence());
-		assertEquals("EXIT", actionOccurrenceLink.getActionOccurrence().getSymbol().getValue());
+		assertNotNull(actionOccurrenceLink.getLinkedModel());
+		assertEquals("EXIT", actionOccurrenceLink.getLinkedModel().getSymbol().getValue());
 
 		List<ActionLink> actionLinks = rule.getActionLinks();
 		assertNotNull(actionLinks);
 		assertEquals(1, actionLinks.size());
 		ActionLink actionLink = actionLinks.get(0);
 		assertNotNull(actionLink);
-		assertNotNull(actionLink.getAction());
+		assertNotNull(actionLink.getLinkedModel());
 	}
-
 }

@@ -47,7 +47,7 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 			newRule.getConditions().stream().forEach(condition -> {
 				if (lfRule.getConditionLinks()!=null) {
 					for (ConditionLink lfConditionLink : lfRule.getConditionLinks()) {
-						if (condition.getDefinition().getText().equals(lfConditionLink.getCondition().getTitle().getValue())) {
+						if (condition.getDefinition().getText().equals(lfConditionLink.getLinkedModel().getTitle().getValue())) {
 							condition.setValue(lfConditionLink.getConditionState() ? "Y" : "N");
 						}
 					}					
@@ -57,7 +57,7 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 			newRule.getActions().stream().forEach(action -> {
 				if (lfRule.getActionLinks()!=null) {
 					for (ActionLink lfActionnLink : lfRule.getActionLinks()) {
-						if (action.getDefinition().getText().equals(lfActionnLink.getAction().getTitle().getValue())) {
+						if (action.getDefinition().getText().equals(lfActionnLink.getLinkedModel().getTitle().getValue())) {
 							action.setValue("X");
 						}
 					}						
@@ -73,9 +73,9 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 	private void map(IAction action, List<ActionOccurrenceLink> actionOccurrenceLinks) {
 		if (actionOccurrenceLinks!=null) {
 			for (ActionOccurrenceLink eachOccLink : actionOccurrenceLinks) {
-				Action lfAction = eachOccLink.getActionOccurrence().getAction();
+				Action lfAction = eachOccLink.getLinkedModel().getAction();
 				if (lfAction.getTitle().getValue().equals(action.getDefinition().getText())) {
-					action.setValue(eachOccLink.getActionOccurrence().getSymbol().getValue());
+					action.setValue(eachOccLink.getLinkedModel().getSymbol().getValue());
 				}
 			}			
 		}
@@ -84,9 +84,9 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 	protected void map(ICondition condition, List<ConditionOccurrenceLink> conditionOccurrenceLinks) {
 		if (conditionOccurrenceLinks!=null) {
 			for (ConditionOccurrenceLink eachOccLink : conditionOccurrenceLinks) {
-				Condition lfCondition = eachOccLink.getConditionOccurrence().getCondition();
+				Condition lfCondition = eachOccLink.getLinkedModel().getCondition();
 				if (lfCondition.getTitle().getValue().equals(condition.getDefinition().getText())) {
-					condition.setValue(eachOccLink.getConditionOccurrence().getSymbol().getValue());
+					condition.setValue(eachOccLink.getLinkedModel().getSymbol().getValue());
 				}
 			}			
 		}
