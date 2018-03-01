@@ -10,13 +10,24 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ConditionOccurrenceLink {
-
 	@Attribute
 	private String link;
 
 	private ConditionOccurrence conditionOccurrence;
 
 	public ConditionOccurrenceLink() {
+	}
+
+	public ConditionOccurrence getConditionOccurrence() {
+		return conditionOccurrence;
+	}
+	
+	public void setConditionOccurrence(ConditionOccurrence conditionOccurence) {
+		this.conditionOccurrence = conditionOccurence;
+	}
+	
+	protected String getLink() {
+		return link;
 	}
 
 	@Validate
@@ -28,15 +39,7 @@ public class ConditionOccurrenceLink {
 
 	@Commit
 	public void commit(Map<String, Object> session) {
-		Object condition = session.get(link);
+		Object condition = session.get(getLink());
 		setConditionOccurrence((ConditionOccurrence) condition);
-	}
-
-	public void setConditionOccurrence(ConditionOccurrence conditionOccurence) {
-		this.conditionOccurrence = conditionOccurence;
-	}
-
-	public ConditionOccurrence getConditionOccurrence() {
-		return conditionOccurrence;
 	}
 }

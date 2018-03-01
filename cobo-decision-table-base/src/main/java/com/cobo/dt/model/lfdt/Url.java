@@ -3,20 +3,16 @@ package com.cobo.dt.model.lfdt;
 import org.simpleframework.xml.Attribute;
 
 public class Url {
-	@Attribute
+	@Attribute(name = "title")
 	private String title;
 	
-	@Attribute
+	@Attribute(name = "url")
 	private String url;
 	
-	@Attribute(required = false)
+	@Attribute(name="executable", required = false)
 	private Boolean executable;
 	
-	public Url(String title, String url) {
-		this(title, url, null);
-	}
-	
-	public Url(String title, String url, Boolean executable) {
+	public Url(@Attribute(name = "title") String title, @Attribute(name = "url") String url, @Attribute(name="executable", required = false) Boolean executable) {
 		this.title = title;
 		this.url = url;
 		this.executable = executable;

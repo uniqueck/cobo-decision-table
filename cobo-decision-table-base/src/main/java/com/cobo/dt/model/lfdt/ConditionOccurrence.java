@@ -36,12 +36,12 @@ public class ConditionOccurrence extends AbstractOccurrence {
 		setCondition(null);
 	}
 
-	protected void setCondition(Condition condition) {
-		this.condition = condition;
-	}
-
 	public Condition getCondition() {
 		return condition;
+	}
+
+	protected void setCondition(Condition condition) {
+		this.condition = condition;
 	}
 
 	@Commit

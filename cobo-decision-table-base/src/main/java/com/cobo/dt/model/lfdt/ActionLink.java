@@ -18,6 +18,18 @@ public class ActionLink {
 	public ActionLink() {
 	}
 
+	public Action getAction() {
+		return action;
+	}
+	
+	public void setAction(Action action) {
+		this.action = action;
+	}
+	
+	protected String getLink() {
+		return link;
+	}
+
 	@Validate
 	public void validate(Map<String,Object> session) throws PersistenceException {
 		if (session.isEmpty()) {
@@ -27,16 +39,7 @@ public class ActionLink {
 
 	@Commit
 	public void commit(Map<String, Object> session) {
-		Object action = session.get(link);
+		Object action = session.get(getLink());
 		setAction((Action) action);
 	}
-
-	public void setAction(Action action) {
-		this.action = action;
-	}
-	
-	public Action getAction() {
-		return action;
-	}
-	
 }

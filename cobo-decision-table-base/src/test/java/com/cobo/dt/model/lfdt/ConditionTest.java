@@ -85,8 +85,8 @@ public class ConditionTest {
 		List<ConditionOccurrence> occurences = new ArrayList<ConditionOccurrence>();
 		
 		List<Url> urls = new ArrayList<Url>();
-		urls.add(new Url("title1", "http://url1"));
-		urls.add(new Url("title2", "http://url2"));
+		urls.add(new Url("title1", "http://url1", null));
+		urls.add(new Url("title2", "http://url2", null));
 		
 		Condition condition = createUnderTest(uid, title, text, sourceCodes, occurences, urls);
 		
@@ -125,23 +125,23 @@ public class ConditionTest {
 		sourceCodesForConditionOccurrence1.add(new SourceCode("Perl", "sourceCodeType11", "value11"));
 		sourceCodesForConditionOccurrence1.add(new SourceCode("Perl", "sourceCodeType12", "value12"));
 		List<Url> urlsForConditionOccurrence1 = new ArrayList<Url>();
-		urlsForConditionOccurrence1.add(new Url("title11", "http://url11"));
-		urlsForConditionOccurrence1.add(new Url("title21", "http://url21"));
+		urlsForConditionOccurrence1.add(new Url("title11", "http://url11", null));
+		urlsForConditionOccurrence1.add(new Url("title21", "http://url21", null));
 		ConditionOccurrence occurence1 = new ConditionOccurrence("11111", new Symbol("English", "symbol1"), new Title("English", "title1"), new Text("English", "docuText1"), sourceCodesForConditionOccurrence1, urlsForConditionOccurrence1);
 		List<SourceCode> sourceCodesForCondtionOccurrence2 = new ArrayList<SourceCode>();
 		sourceCodesForCondtionOccurrence2.add(new SourceCode("Perl", "sourceCodeType11", "value11"));
 		sourceCodesForCondtionOccurrence2.add(new SourceCode("Perl", "sourceCodeType12", "value12"));
 		List<Url> urlsForConditionOccurrence2 = new ArrayList<Url>();
-		urlsForConditionOccurrence2.add(new Url("title12", "http://url12"));
-		urlsForConditionOccurrence2.add(new Url("title22", "http://url22"));
+		urlsForConditionOccurrence2.add(new Url("title12", "http://url12", null));
+		urlsForConditionOccurrence2.add(new Url("title22", "http://url22", null));
 		ConditionOccurrence occurence2 = new ConditionOccurrence("22222", new Symbol("English", "symbol2"), new Title("English", "title2"), new Text("English", "docuText2"), sourceCodesForCondtionOccurrence2, urlsForConditionOccurrence2);
 		List<ConditionOccurrence> occurences = new ArrayList<ConditionOccurrence>();
 		occurences.add(occurence1);
 		occurences.add(occurence2);
 		
 		List<Url> urls = new ArrayList<Url>();
-		urls.add(new Url("title1", "http://url1"));
-		urls.add(new Url("title2", "http://url2"));
+		urls.add(new Url("title1", "http://url1", null));
+		urls.add(new Url("title2", "http://url2", null));
 		
 		Condition condition = createUnderTest("12345", new Title("English", "title"),
 				new Text("English", "docuText"), sourceCodes, occurences, urls);

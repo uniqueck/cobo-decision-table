@@ -98,19 +98,19 @@ public class AbstractRulePartTest {
 		sourceCodesForOccurrence1.add(new SourceCode("Perl", "sourceCodeType11", "value11"));
 		sourceCodesForOccurrence1.add(new SourceCode("Perl", "sourceCodeType12", "value12"));
 		List<Url> urlsForConditionOccurrence1 = new ArrayList<Url>();
-		urlsForConditionOccurrence1.add(new Url("title11", "http://url11"));
-		urlsForConditionOccurrence1.add(new Url("title21", "http://url21"));
+		urlsForConditionOccurrence1.add(new Url("title11", "http://url11", null));
+		urlsForConditionOccurrence1.add(new Url("title21", "http://url21", null));
 		occurrences.add(new AbstractOccurrence("23456", new Symbol("German", "SYMBOL"), new Title("German", "titleValue"), new Text("English", "docuText1"), sourceCodesForOccurrence1, urlsForConditionOccurrence1) {});
 		List<SourceCode> sourceCodesForOccurrence2 = new ArrayList<SourceCode>();
 		sourceCodesForOccurrence2.add(new SourceCode("Perl", "sourceCodeType21", "value21"));
 		sourceCodesForOccurrence2.add(new SourceCode("Perl", "sourceCodeType22", "value22"));
 		List<Url> urlsForConditionOccurrence2 = new ArrayList<Url>();
-		urlsForConditionOccurrence2.add(new Url("title12", "http://url12"));
-		urlsForConditionOccurrence2.add(new Url("title22", "http://url22"));
+		urlsForConditionOccurrence2.add(new Url("title12", "http://url12", null));
+		urlsForConditionOccurrence2.add(new Url("title22", "http://url22", null));
 		occurrences.add(new AbstractOccurrence("34567", new Symbol("German", "SYMBOL2"), new Title("German", "titleValue2"), new Text("English", "docuText2"), sourceCodesForOccurrence2, urlsForConditionOccurrence2) {});
 		List<Url> urls = new ArrayList<Url>();
-		urls.add(new Url("title1", "http://url1"));
-		urls.add(new Url("title2", "http://url2"));
+		urls.add(new Url("title1", "http://url1", null));
+		urls.add(new Url("title2", "http://url2", null));
 
 		AbstractRulePart<AbstractOccurrence> action = createUnderTest("12345", new Title("English", "title"),
 			new Text("English", "docuText"), sourceCodes, occurrences, urls);

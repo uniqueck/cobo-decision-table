@@ -10,7 +10,6 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ActionOccurrenceLink {
-
 	@Attribute
 	private String link;
 
@@ -19,6 +18,18 @@ public class ActionOccurrenceLink {
 	public ActionOccurrenceLink() {
 	}
 
+	public ActionOccurrence getActionOccurrence() {
+		return actionOccurrence;
+	}
+	
+	public void setActionOccurrence(ActionOccurrence actionOccurrence) {
+		this.actionOccurrence = actionOccurrence;
+	}
+
+	protected String getLink() {
+		return link;
+	}
+	
 	@Validate
 	public void validate(Map<String, Object> session) throws PersistenceException {
 		if (session.isEmpty()) {
@@ -28,15 +39,7 @@ public class ActionOccurrenceLink {
 
 	@Commit
 	public void commit(Map<String, Object> session) {
-		Object actionOcc = session.get(link);
+		Object actionOcc = session.get(getLink());
 		setActionOccurrence((ActionOccurrence) actionOcc);
-	}
-
-	public void setActionOccurrence(ActionOccurrence actionOccurrence) {
-		this.actionOccurrence = actionOccurrence;
-	}
-	
-	public ActionOccurrence getActionOccurrence() {
-		return actionOccurrence;
 	}
 }

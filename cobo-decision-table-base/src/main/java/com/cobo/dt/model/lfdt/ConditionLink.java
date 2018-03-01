@@ -10,16 +10,31 @@ import org.simpleframework.xml.core.Validate;
 
 @Root(strict = false)
 public class ConditionLink {
-
-	@Attribute
+	@Attribute(name = "link")
 	private String link;
 	
 	private Condition condition;
 	
-	@Attribute
+	@Attribute(name = "conditionState")
 	private boolean conditionState;
 
 	public ConditionLink() {
+	}
+
+	public Condition getCondition() {
+		return condition;
+	}
+
+	protected void setCondition(Condition condition) {
+		this.condition = condition;
+	}
+	
+	public boolean getConditionState() {
+		return conditionState;
+	}
+	
+	protected String getLink() {
+		return link;
 	}
 
 	@Validate
@@ -31,20 +46,7 @@ public class ConditionLink {
 
 	@Commit
 	public void commit(Map<String, Object> session) {
-		Object condition = session.get(link);
+		Object condition = session.get(getLink());
 		setCondition((Condition) condition);
 	}
-
-	protected void setCondition(Condition condition) {
-		this.condition = condition;
-	}
-	
-	public Condition getCondition() {
-		return condition;
-	}
-	
-	public boolean isConditionState() {
-		return conditionState;
-	}
-	
 }

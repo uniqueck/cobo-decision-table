@@ -16,10 +16,6 @@ public class UrlTest {
 		return createUnderTest("title", "file://path", true);
 	}
 	
-	private Url createUnderTest(String title, String url) {
-		return new Url(title, url);
-	}
-			
 	private Url createUnderTest(String title, String url, Boolean executable) {
 		return new Url(title, url, executable);
 	}
@@ -29,6 +25,10 @@ public class UrlTest {
 		StringWriter out = new StringWriter();
 		xmlPersister.write(url, out);
 		return out.toString();		
+	}
+	
+	private Url convertToModel(String xml) throws Exception {
+		return new Persister().read(Url.class, xml);
 	}
 	
 	private String createExpectedXml() {
@@ -41,14 +41,6 @@ public class UrlTest {
 
 	private String createExpectedXml3() {
 		return "<url title='title' url='file://path' executable='false'/>";
-	}
-
-	@Test
-	public void testUrl_twoParams() throws Exception {
-		Url url = createUnderTest("title", "http://url");
-		assertEquals("title", url.getTitle());
-		assertEquals("http://url", url.getUrl());
-		assertFalse(url.isExecutable());
 	}
 
 	@Test
@@ -112,5 +104,14 @@ public class UrlTest {
 		Url url = createUnderTest("title", "file://path", false);
 		String xml = persist(url);
 		assertEquals(createExpectedXml3().replaceAll("'", "\""), xml);
+	}
+	
+	@Test
+	public void testRead_urlTagWithTwoAttributes() throws Exception {
+		String xml = createExpectedXml2().replaceAll("'", "\"");
+		Url url = convertToModel(xml);
+		assertEquals("title", url.getTitle());
+		assertEquals("file://path", url.getUrl());
+		assertFalse(url.isExecutable());
 	}
 }

@@ -36,14 +36,14 @@ public class ActionOccurrence extends AbstractOccurrence {
 		setAction(null);
 	}
 
-	protected void setAction(Action action) {
-		this.action = action;
-	}
-	
 	public Action getAction() {
 		return action;
 	}
-	
+
+	protected void setAction(Action action) {
+		this.action = action;
+	}
+
 	@Commit
 	public void commit(Map<String, Object> session) {
 		session.put(getUId(), this);

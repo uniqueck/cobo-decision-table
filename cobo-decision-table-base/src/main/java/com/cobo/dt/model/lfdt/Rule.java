@@ -1,36 +1,66 @@
 package com.cobo.dt.model.lfdt;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false)
 public class Rule {
+	@Attribute(name = "id")
+	private String id;
 
-
-	@ElementList(inline = true, required = false, entry = "ConditionLink")
+	@Element(name = "Text", required = false)
+	private Text text;
+	
+	@ElementList(entry = "ConditionLink", required = false, inline = true)
 	private List<ConditionLink> conditionLinks;
 
-	@ElementList(inline = true, required = false, entry = "ActionLink")
+	@ElementList(entry = "ActionLink", required = false, inline = true)
 	private List<ActionLink> actionLinks;
 
-	
-	@ElementList(inline = true, required = false, entry = "ConditionOccurrenceLink")
+	@ElementList(entry = "ConditionOccurrenceLink", required = false, inline = true)
 	private List<ConditionOccurrenceLink> conditionOccurrenceLinks;
 	
-	@ElementList(inline = true, required = false, entry = "ActionOccurrenceLink")
-	private List<ActionOccurrenceLink> actionnOccurrenceLinks;
+	@ElementList(entry = "ActionOccurrenceLink", required = false, inline = true)
+	private List<ActionOccurrenceLink> actionOccurrenceLinks;
 
+	public Rule(
+			@Attribute(name = "id") 
+			String id, 
+			
+			@Element(name = "Text", required = false)
+			Text text,
+			
+			@ElementList(entry = "ConditionLink", required = false, inline = true)
+			List<ConditionLink> conditionLinks,
 
-	public Rule() {
-		this.actionnOccurrenceLinks = new ArrayList<>();
-		this.actionLinks = new  ArrayList<>();
-		this.conditionOccurrenceLinks = new ArrayList<>();
-		this.conditionLinks = new ArrayList<>();
+			@ElementList(entry = "ActionLink", required = false, inline = true)
+			List<ActionLink> actionLinks,
+
+			@ElementList(entry = "ConditionOccurrenceLink", required = false, inline = true)
+			List<ConditionOccurrenceLink> conditionOccurrenceLinks,
+			
+			@ElementList(entry = "ActionOccurrenceLink", required = false, inline = true)
+			List<ActionOccurrenceLink> actionOccurrenceLinks
+		) {
+		this.id = id; 
+		this.text = text;
+		this.actionOccurrenceLinks = actionOccurrenceLinks;
+		this.actionLinks = actionLinks;
+		this.conditionOccurrenceLinks = conditionOccurrenceLinks;
+		this.conditionLinks = conditionLinks;
 	}
 
+	public String getId() {
+		return id;
+	}
+	
+	public Text getText() {
+		return text;
+	}
 	
 	public List<ConditionLink> getConditionLinks() {
 		return conditionLinks;
@@ -44,8 +74,7 @@ public class Rule {
 		return actionLinks;
 	}
 	
-	public List<ActionOccurrenceLink> getActionnOccurrenceLinks() {
-		return actionnOccurrenceLinks;
+	public List<ActionOccurrenceLink> getActionOccurrenceLinks() {
+		return actionOccurrenceLinks;
 	}
-
 }

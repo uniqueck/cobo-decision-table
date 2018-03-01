@@ -52,8 +52,8 @@ public class ActionOccurrenceTest {
 		sourceCodes.add(sourceCode2);
 		
 		List<Url> urls = new ArrayList<Url>();
-		urls.add(new Url("title1", "http://url1"));
-		urls.add(new Url("title2", "http://url2"));
+		urls.add(new Url("title1", "http://url1", null));
+		urls.add(new Url("title2", "http://url2", null));
 		
 		ActionOccurrence occurrence = createUnderTest(uid, symbol, title, text, sourceCodes, urls);
 		assertSame(uid, occurrence.getUId());
@@ -72,8 +72,8 @@ public class ActionOccurrenceTest {
 		sourceCodes.add(sourceCode1);
 		sourceCodes.add(sourceCode2);
 		List<Url> urls = new ArrayList<Url>();
-		urls.add(new Url("title1", "http://url1"));
-		urls.add(new Url("title2", "http://url2"));
+		urls.add(new Url("title1", "http://url1", null));
+		urls.add(new Url("title2", "http://url2", null));
 
 		ActionOccurrence occurrence = createUnderTest("12345", new Symbol("English", "symbol"), new Title("English", "title"),
 				new Text("English", "docuText"), sourceCodes, urls);

@@ -8,24 +8,24 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
-@Root(strict = false, name = "LFET")
+@Root(name = "LFET", strict = false)
 public class LFDecisionTable {
-	@Attribute(required = true, name = "version")
+	@Attribute(name = "version")
 	private String version;
 
-	@Attribute(required = true, name = "language")
+	@Attribute(name = "language")
 	private String language;
 
-	@Attribute(required = true, name = "saveUser")
+	@Attribute(name = "saveUser")
 	private String saveUser;
 
-	@Attribute(required = true, name = "saveDate")
+	@Attribute(name = "saveDate")
 	private String saveDate;
 
-	@Element(required = false, name = "Title")
+	@Element(name = "Title", required = false)
 	private Title title;
 
-	@Element(required = false, name = "Text")
+	@Element(name = "Text", required = false)
 	private Text text;
 
 	@Path("Conditions")
@@ -36,27 +36,73 @@ public class LFDecisionTable {
 	@ElementList(entry = "Action", inline = true)
 	private List<Action> actions;
 
-	@ElementList(required = false, name = "Rules")
+	@Path(value = "Rules")
+	@Attribute(name = "lastId")
+	private String lastRuleId;
+
+	@Path(value = "Rules")
+	@ElementList(entry = "Rule", required = false, inline = true)
 	private List<Rule> rules;
 
-	@ElementList(required = false, inline = true, name = "SourceCode")
+	@ElementList(name = "SourceCode", required = false, inline = true)
 	private List<SourceCode> sourceCodes;
 
+	@Path(value = "UrlsOut") 
+	@ElementList(entry = "Url", required = false, inline = true) 
+	private List<Url> urls;
+	
+	@Path("Snapshots")
+	@ElementList(entry = "Snapshot", required = false, inline = true)	
+	private List<Snapshot> snapshots;
+	
 	public LFDecisionTable() {
-		this(null, null, null, null, null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 
 	public LFDecisionTable(
-			@Attribute(required = true, name = "version") String version,
-			@Attribute(required = true, name = "language") String language,
-			@Attribute(required = true, name = "saveUser") String saveUser,
-			@Attribute(required = true, name = "saveDate") String saveDate,
-			@Element(required = false, name = "Title") Title title, 
-			@Element(required = false, name = "Text") Text text,
-			@ElementList(inline = true, required = false, name = "SourceCode") List<SourceCode> sourceCodes,
-			@Path("Conditions") @ElementList(entry = "Condition", inline = true) List<Condition> conditions,
-			@Path("Actions") @ElementList(entry = "Action", inline = true) List<Action> actions, 
-			List<Rule> rules) {
+			@Attribute(name = "version") 
+			String version,
+			
+			@Attribute(name = "language") 
+			String language,
+			
+			@Attribute(name = "saveUser") 
+			String saveUser,
+			
+			@Attribute(name = "saveDate") 
+			String saveDate,
+			
+			@Element(name = "Title", required = false) 
+			Title title,
+			
+			@Element(name = "Text", required = false) 
+			Text text,
+			
+			@ElementList(name = "SourceCode", required = false, inline = true) 
+			List<SourceCode> sourceCodes,
+			
+			@Path("Conditions") @ElementList(entry = "Condition", inline = true) 
+			List<Condition> conditions,
+			
+			@Path("Actions") @ElementList(entry = "Action", inline = true) 
+			List<Action> actions,
+			
+			@Path(value = "Rules")
+			@Attribute(name = "lastId")
+			String lastRuleId,
+			
+			@Path(value = "Rules")
+			@ElementList(entry = "Rule", required = false, inline = true)
+			List<Rule> rules,
+			
+			@Path(value = "UrlsOut") 
+			@ElementList(entry = "Url", required = false, inline = true) 
+			List<Url> urls,
+
+			@Path("Snapshots")
+			@ElementList(entry = "Snapshot", required = false, inline = true)	
+			List<Snapshot> snapshots
+		) {
 		this.version = version;
 		this.title = title;
 		this.text = text;
@@ -67,6 +113,9 @@ public class LFDecisionTable {
 		this.conditions = conditions;
 		this.actions = actions;
 		this.rules = rules;
+		this.urls = urls;
+		this.lastRuleId = lastRuleId;
+		this.snapshots = snapshots;
 	}
 
 	public String getVersion() {
@@ -109,11 +158,19 @@ public class LFDecisionTable {
 		return rules;
 	}
 
-	public boolean isStateMachine() {
-		return false;
-	}
-
 	public void setConditions(List<Condition> conditions) {
 		this.conditions = conditions;
+	}
+	
+	public List<Url> getUrls() {
+		return urls;
+	}
+	
+	public String getLastRuleId() {
+		return lastRuleId;
+	}
+	
+	public List<Snapshot> getSnapshots() {
+		return snapshots;
 	}
 }

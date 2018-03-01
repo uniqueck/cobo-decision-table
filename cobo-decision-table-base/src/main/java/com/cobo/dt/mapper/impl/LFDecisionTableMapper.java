@@ -45,20 +45,24 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 		dt2Map.getRules().stream().forEach(lfRule -> {
 			IRule newRule = decisionTable.addNewRule();
 			newRule.getConditions().stream().forEach(condition -> {
-				for (ConditionLink lfConditionLink : lfRule.getConditionLinks()) {
-					if (condition.getDefinition().getText().equals(lfConditionLink.getCondition().getTitle().getValue())) {
-						condition.setValue(lfConditionLink.isConditionState() ? "Y" : "N");
-					}
+				if (lfRule.getConditionLinks()!=null) {
+					for (ConditionLink lfConditionLink : lfRule.getConditionLinks()) {
+						if (condition.getDefinition().getText().equals(lfConditionLink.getCondition().getTitle().getValue())) {
+							condition.setValue(lfConditionLink.getConditionState() ? "Y" : "N");
+						}
+					}					
 				}
 				map(condition, lfRule.getConditionOccurrenceLinks());				
 			});
 			newRule.getActions().stream().forEach(action -> {
-				for (ActionLink lfActionnLink : lfRule.getActionLinks()) {
-					if (action.getDefinition().getText().equals(lfActionnLink.getAction().getTitle().getValue())) {
-						action.setValue("X");
-					}
-				}	
-				map(action, lfRule.getActionnOccurrenceLinks());	
+				if (lfRule.getActionLinks()!=null) {
+					for (ActionLink lfActionnLink : lfRule.getActionLinks()) {
+						if (action.getDefinition().getText().equals(lfActionnLink.getAction().getTitle().getValue())) {
+							action.setValue("X");
+						}
+					}						
+				}
+				map(action, lfRule.getActionOccurrenceLinks());	
 			});
 			
 			
@@ -66,24 +70,26 @@ public class LFDecisionTableMapper implements MapToDecisionTable<LFDecisionTable
 		});
 	}
 
-	private void map(IAction action, List<ActionOccurrenceLink> actionnOccurrenceLinks) {
-		for (ActionOccurrenceLink eachOccLink : actionnOccurrenceLinks) {
-			Action lfAction = eachOccLink.getActionOccurrence().getAction();
-			if (lfAction.getTitle().getValue().equals(action.getDefinition().getText())) {
-				action.setValue(eachOccLink.getActionOccurrence().getSymbol().getValue());
-			}
+	private void map(IAction action, List<ActionOccurrenceLink> actionOccurrenceLinks) {
+		if (actionOccurrenceLinks!=null) {
+			for (ActionOccurrenceLink eachOccLink : actionOccurrenceLinks) {
+				Action lfAction = eachOccLink.getActionOccurrence().getAction();
+				if (lfAction.getTitle().getValue().equals(action.getDefinition().getText())) {
+					action.setValue(eachOccLink.getActionOccurrence().getSymbol().getValue());
+				}
+			}			
 		}
-		
 	}
 
 	protected void map(ICondition condition, List<ConditionOccurrenceLink> conditionOccurrenceLinks) {
-		for (ConditionOccurrenceLink eachOccLink : conditionOccurrenceLinks) {
-			Condition lfCondition = eachOccLink.getConditionOccurrence().getCondition();
-			if (lfCondition.getTitle().getValue().equals(condition.getDefinition().getText())) {
-				condition.setValue(eachOccLink.getConditionOccurrence().getSymbol().getValue());
-			}
+		if (conditionOccurrenceLinks!=null) {
+			for (ConditionOccurrenceLink eachOccLink : conditionOccurrenceLinks) {
+				Condition lfCondition = eachOccLink.getConditionOccurrence().getCondition();
+				if (lfCondition.getTitle().getValue().equals(condition.getDefinition().getText())) {
+					condition.setValue(eachOccLink.getConditionOccurrence().getSymbol().getValue());
+				}
+			}			
 		}
-		
 	}
 
 	private void mapActions(LFDecisionTable dt2Map, DecisionTable decisionTable) {

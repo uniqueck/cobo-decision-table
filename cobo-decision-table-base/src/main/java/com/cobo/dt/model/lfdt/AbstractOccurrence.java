@@ -42,11 +42,11 @@ public abstract class AbstractOccurrence {
 		return uid;
 	}
 	
-	public AbstractValueBasedOnLanguage getSymbol() {
+	public Symbol getSymbol() {
 		return symbol;
 	}
 	
-	public AbstractValueBasedOnLanguage getTitle() {
+	public Title getTitle() {
 		return title;
 	}
 	
