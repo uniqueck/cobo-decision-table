@@ -40,11 +40,11 @@ text         [Text]
 ----------------------------------------
 sourceCodes  [List&lt;SourceCode&gt;]
 ----------------------------------------
-XXXurls         [List&lt;URL&gt;]
+urls         [List&lt;URL&gt;]
 ----------------------------------------
-XXXsnapshots    [List&lt;Snapshot&gt;]
+snapshots    [List&lt;Snapshot&gt;]
 ----------------------------------------
-XXXlastRuleId   [String]
+lastRuleId   [String]
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -68,7 +68,7 @@ sourceCodes  List&lt;SourceCode&gt;]
 --------------------------------------------------
 text         [Text]
 --------------------------------------------------
-XXXurls         [List&lt;URL&gt;]
+urls         [List&lt;URL&gt;]
 
 </panel_attributes>
     <additional_attributes/>
@@ -374,11 +374,11 @@ symbol       [Symbol]
 ---------------------------------
 title        [Title]
 ---------------------------------
-XXXtext         [Text]
+text         [Text]
 ---------------------------------
 sourceCodes  [List&lt;SourceCode&gt;]
 ---------------------------------
-XXXurls      [List&lt;URL&gt;]</panel_attributes>
+urls         [List&lt;URL&gt;]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -477,9 +477,9 @@ fg=green</panel_attributes>
     </coordinates>
     <panel_attributes>*Rule*
 -
-XXXid                        [String]
+id                        [String]
 ---------------------------------------------------------
-XXXtext                      [Text]
+text                      [Text]
 ---------------------------------------------------------
 conditionLinks            [List&lt;ConditionLink&gt;]
 ---------------------------------------------------------
@@ -695,7 +695,7 @@ fg=blue</panel_attributes>
       <w>144</w>
       <h>72</h>
     </coordinates>
-    <panel_attributes>*XXXURL*
+    <panel_attributes>*URL*
 -
 title       [String]
 ------------------------
@@ -754,7 +754,7 @@ fg=dark_gray</panel_attributes>
       <w>144</w>
       <h>136</h>
     </coordinates>
-    <panel_attributes>*XXXSnapshot*
+    <panel_attributes>*Snapshot*
 -
 crDat  [String]
 ------------------------
@@ -807,7 +807,7 @@ style=wordwrap</panel_attributes>
       <h>24</h>
     </coordinates>
     <panel_attributes>fontsize=14
-/*(work level: 2018-02-25)*/
+/*(work level: 2018-03-01)*/
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>

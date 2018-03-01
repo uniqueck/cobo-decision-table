@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 @Root
 public abstract class AbstractOccurrence {
 	@Attribute(name = "uId")
-	private String uid;
+	private String uId;
 
 	@Element(name = "Symbol")
 	private Symbol symbol;
@@ -29,8 +29,8 @@ public abstract class AbstractOccurrence {
 	@ElementList(entry = "Url", required = false, inline = true) 
 	private List<Url> urls;
 
-	public AbstractOccurrence(String uid, Symbol symbol, Title title, Text text, List<SourceCode> sourceCodes, List<Url> urls) {
-		this.uid = uid;
+	public AbstractOccurrence(String uId, Symbol symbol, Title title, Text text, List<SourceCode> sourceCodes, List<Url> urls) {
+		this.uId = uId;
 		this.symbol = symbol;
 		this.title = title;
 		this.text = text;
@@ -39,7 +39,7 @@ public abstract class AbstractOccurrence {
 	}
 	
 	public String getUId() {
-		return uid;
+		return uId;
 	}
 	
 	public Symbol getSymbol() {
